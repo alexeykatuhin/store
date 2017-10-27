@@ -1,0 +1,18 @@
+﻿@model WebApplication5.Models.ItemListViewModel
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+@foreach (var p in @Model.Items)
+{
+	<div>
+		<h3>@p.Name</h3>
+		<p>@p.Description</p>
+		<h4>@p.Price.ToString()</h4>
+	</div>
+}
+<div>
+	@Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
+
