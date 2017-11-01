@@ -231,6 +231,13 @@
     <Content Include="Content\css\item.css" />
     <Content Include="Content\Template\ddsmoothmenu.css" />
     <Content Include="Content\Template\jquery.dualSlider.0.2.css" />
+    <Content Include="Content\Template\js\bootstrap.min.js" />
+    <Content Include="Content\Template\js\item.js" />
+    <Content Include="Content\Template\js\jquery-ui.js" />
+    <Content Include="Content\Template\js\jquery.flexslider.js" />
+    <Content Include="Content\Template\js\jquery.min.js" />
+    <Content Include="Content\Template\js\respond.min.js" />
+    <Content Include="Content\Template\js\retina.js" />
     <Content Include="Content\Template\slimbox2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
