@@ -35,5 +35,23 @@ namespace WebApplication5.Controllers
 			}; 
 			return View(model);
 		}
+
+	    public ActionResult GetList(int page = 1)
+	    {
+			ItemListViewModel model = new ItemListViewModel()
+			{
+				Items = _repo.Items
+	.OrderBy(game => game.Id)
+	.Skip((page - 1) * pageSize)
+	.Take(pageSize),
+				PagingInfo = new PagingInfo()
+				{
+					CurrentPage = page,
+					ItemsPerPage = pageSize,
+					TotalItems = _repo.Items.Count()
+				}
+			};
+		    return PartialView("GetList",model);
+	    }
 	}
 }

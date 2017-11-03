@@ -1014,24 +1014,24 @@ footer .divider{
 .listgrid img.grid {
     width: 20px;
     height: 17px;
-    background:url(../images/gridicon.png) 0 0;
+    background:url(../Template/images/gridicon.png) 0 0;
 }
 
 .listgrid img.grid.active,
 .listgrid img.grid:hover{
-    background:url(../images/gridicon.png) 20px 0;
+    background:url(../Template/images/gridicon.png) 20px 0;
 }
 
 .listgrid img.list {
     width: 20px;
     height: 17px;
-    background:url(../images/listicon.png) 0 0;
+    background:url(../Template/images/listicon.png) 0 0;
     margin-left: 30px;
 }
 
 .listgrid img.list.active,
 .listgrid img.list:hover{
-    background:url(../images/listicon.png) 20px 0;
+    background:url(../Template/images/listicon.png) 20px 0;
 }
 
 .wfilter .filter{

@@ -230,6 +230,30 @@
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="Content\css\item.css" />
     <Content Include="Content\Template\ddsmoothmenu.css" />
+    <Content Include="Content\Template\images\bestimg1.jpg" />
+    <Content Include="Content\Template\images\card-paypal.jpg" />
+    <Content Include="Content\Template\images\checkbox.png" />
+    <Content Include="Content\Template\images\fb-like-button.jpg" />
+    <Content Include="Content\Template\images\featuredimg1.jpg" />
+    <Content Include="Content\Template\images\featuredimg2.jpg" />
+    <Content Include="Content\Template\images\featuredimg3.jpg" />
+    <Content Include="Content\Template\images\featuredimg4.jpg" />
+    <Content Include="Content\Template\images\gomobile.jpg" />
+    <Content Include="Content\Template\images\gridicon.png" />
+    <Content Include="Content\Template\images\img-tr.png" />
+    <Content Include="Content\Template\images\listicon.png" />
+    <Content Include="Content\Template\images\prod-img-big.jpg" />
+    <Content Include="Content\Template\images\prod-img1.jpg" />
+    <Content Include="Content\Template\images\prod-img2.jpg" />
+    <Content Include="Content\Template\images\prod-img3.jpg" />
+    <Content Include="Content\Template\images\slide1.jpg" />
+    <Content Include="Content\Template\images\slide2.jpg" />
+    <Content Include="Content\Template\images\slide3.jpg" />
+    <Content Include="Content\Template\images\sociallikes.jpg" />
+    <Content Include="Content\Template\images\spring_in_mountains-t2.jpg" />
+    <Content Include="Content\Template\images\weeklyimg1.jpg" />
+    <Content Include="Content\Template\images\weeklyimg2.jpg" />
+    <Content Include="Content\Template\images\weeklyimg3.jpg" />
     <Content Include="Content\Template\jquery.dualSlider.0.2.css" />
     <Content Include="Content\Template\js\bootstrap.min.js" />
     <Content Include="Content\Template\js\item.js" />
@@ -296,6 +320,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Item\List.cshtml" />
+    <Content Include="Views\Item\GetList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />
