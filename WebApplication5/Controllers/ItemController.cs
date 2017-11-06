@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication5.Abstract;
@@ -11,7 +12,10 @@ namespace WebApplication5.Controllers
     public class ItemController : Controller
     {
 	    private IItemRepository _repo;
-	    public int pageSize = 4;
+	    public int pageSize = 2;
+
+		//подгрузка объектов в листинге
+	    private static int curPage;
 	    public ItemController(IItemRepository repo)
 	    {
 		    _repo = repo;
@@ -20,36 +24,30 @@ namespace WebApplication5.Controllers
 	
 		public ViewResult List(int page = 1)
 		{
+			curPage = 1;
 			ItemListViewModel model = new ItemListViewModel()
 			{
 				Items	= _repo.Items
 				.OrderBy(game => game.Id)
 				.Skip((page - 1) * pageSize)
-				.Take(pageSize),
-				PagingInfo = new PagingInfo()
-				{
-					CurrentPage = page,
-					ItemsPerPage = pageSize,
-					TotalItems = _repo.Items.Count()
-				}
+				.Take(pageSize), CurrentPage = 1
 			}; 
 			return View(model);
 		}
 
-	    public ActionResult GetList(int page = 1)
+	    public ActionResult GetList()
 	    {
-			ItemListViewModel model = new ItemListViewModel()
+		    if (curPage > Math.Ceiling((double) _repo.Items.Count() / pageSize))
+		    {
+				var script = "$('#java-script-update').html('<p> Updated by Alex</p>');";
+			    return JavaScript(script);
+			}
+		    ItemListViewModel model = new ItemListViewModel()
 			{
 				Items = _repo.Items
 	.OrderBy(game => game.Id)
-	.Skip((page - 1) * pageSize)
-	.Take(pageSize),
-				PagingInfo = new PagingInfo()
-				{
-					CurrentPage = page,
-					ItemsPerPage = pageSize,
-					TotalItems = _repo.Items.Count()
-				}
+	.Skip((++curPage - 1) * pageSize)
+	.Take(pageSize)
 			};
 		    return PartialView("GetList",model);
 	    }
