@@ -50,15 +50,15 @@
 			<div  class="col-sm-8 col-sm-offset-0 col-md-6 col-md-offset-2 col-lg-4 col-lg-offset-4">
 				<div id="loadItems"  class="loadmore">
 				
-					@Ajax.ActionLink("Load More items", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter})
+					@Ajax.ActionLink("Load More items", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "OnSuccess" })
 					@*<a href="#">
 						<i class="icon-cogs"></i> 
 						Load More items
 					</a>*@
 				</div>
-				<div id="returnBack" class="loadmore">
+				<div id="returnBack" hidden="true" class="loadmore">
 				
-					@Ajax.ActionLink("Load More items", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter})
+					@Ajax.ActionLink("Clear", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter})
 					@*<a href="#">
 						<i class="icon-cogs"></i> 
 						Load More items
@@ -69,6 +69,14 @@
 		
 		</div>
 		
+<script type="text/javascript">
+	function OnSuccess() {
+		if ($(".item").length == @Model.Count) {
+			$('#loadItems').first().prop('hidden', 'true');
+			$('#returnBack').first().attr('hidden', 'false');
+		}
 
+	}
+</script>
 
 

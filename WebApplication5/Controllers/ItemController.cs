@@ -30,18 +30,14 @@ namespace WebApplication5.Controllers
 				Items	= _repo.Items
 				.OrderBy(game => game.Id)
 				.Skip((page - 1) * pageSize)
-				.Take(pageSize), CurrentPage = 1
+				.Take(pageSize), Count = _repo.Items.Count()
 			}; 
 			return View(model);
 		}
 
 	    public ActionResult GetList()
 	    {
-		    if (curPage > Math.Ceiling((double) _repo.Items.Count() / pageSize))
-		    {
-				var script = "$('#java-script-update').html('<p> Updated by Alex</p>');";
-			    return JavaScript(script);
-			}
+	
 		    ItemListViewModel model = new ItemListViewModel()
 			{
 				Items = _repo.Items
