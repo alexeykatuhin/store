@@ -20,18 +20,17 @@ jQuery(document).ready(function() {
     );
 
 
-    //Show/Hide rating on item rollover
-    $(".item").hover(
+    ////Show/Hide rating on item rollover
+    $(".mo").hover(
             function() {
                 // Styles to show the box
-                $(this).find('.mo').show();
-                $(this).find('.rating').hide();
+            	$(this).css('background-color','#f6f6f6');
+   
 
             },
             function() {
                 // Styles to hide the box
-                $(this).find('.mo').hide();
-                $(this).find('.rating').show();
+            	$(this).css('background-color', 'transparent');
             }
     );
 

@@ -14,7 +14,7 @@
 			<a><img src="~/Content/Template/images/img-tr.png" alt class="grid active"></a><a><img src="~/Content/Template/images/img-tr.png" alt class="list "></a>
 		</div>
 	</div>
-	@*<div class="row dividermr">&nbsp;</div>*@
+	<div class="row dividermr">&nbsp;</div>
 	<div id="resss" class="row itemlist">
 		@foreach (var p in @Model.Items)
 		{
@@ -29,11 +29,8 @@
 						<p class="name">@($"\n{p.Name}\n")</p>
 						<p class="desc">@($"\n{p.Description}\n")</p>
 						<div class="buttons">
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 price"><div class="old-price">₽@(p.Price * 1.4)</div><div class="new-price">₽@p.Price</div></div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon mo" style="display: none;"><a href="#"><i class="icon-heart"></i></a></div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon mo" style="display: none;"><a href="#"><i class="icon-refresh"></i></a></div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart mo" style="display: none;"><a href="#" class="themecolor"><i class="icon-shopping-cart"></i></a></div>
-							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 btnicon rating" style="display: block;"> Rating - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price"><div class="old-price">₽@(p.Price * 1.4)</div><div class="new-price">₽@p.Price</div></div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart mo"><a href="#" class="themecolor"><i class="icon-shopping-cart"></i></a></div>
 						</div>
 					</div>
 
@@ -42,38 +39,42 @@
 			</div>
 		}
 	</div>
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-0 col-md-6 col-md-offset-2 col-lg-4 col-lg-offset-4">
+			<div id="loadItems" class="loadmore">
+				<a data-ajax="true" data-ajax-mode="after" data-ajax-success="OnSuccess" data-ajax-update="#resss" href="@Url.Action("GetList")">
+					<i class="icon-cogs"></i>
+					Показать еще
+				</a>
 
+			</div>
+			<div id="returnBack" class="loadmore">
+				<a href="@Url.Action("List")">
+					<i class="icon-cogs"></i>
+					Вернуться
+				</a>
+				@*<a href="#">
+						<i class="icon-cogs"></i>
+						Load More items
+					</a>*@
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-4 col-lg-4 itemcount">
+			<b id="itemsCount">@Model.Items.Count()</b> /@Model.Count товаров
+		</div>
+	</div>
 		
 	</div>
-		<div class="row">
-	
-			<div  class="col-sm-8 col-sm-offset-0 col-md-6 col-md-offset-2 col-lg-4 col-lg-offset-4">
-				<div id="loadItems"  class="loadmore">
-				
-					@Ajax.ActionLink("Load More items", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "OnSuccess" })
-					@*<a href="#">
-						<i class="icon-cogs"></i> 
-						Load More items
-					</a>*@
-				</div>
-				<div id="returnBack" hidden="true" class="loadmore">
-				
-					@Ajax.ActionLink("Clear", "GetList", "Item",  new AjaxOptions {UpdateTargetId = "resss", InsertionMode = InsertionMode.InsertAfter})
-					@*<a href="#">
-						<i class="icon-cogs"></i> 
-						Load More items
-					</a>*@
-				</div>
-			</div>
-			
-		
-		</div>
+
+
+@Html.Partial("_Filter")
 		
 <script type="text/javascript">
 	function OnSuccess() {
+		$('#itemsCount').html($(".item").length);
 		if ($(".item").length == @Model.Count) {
-			$('#loadItems').first().prop('hidden', 'true');
-			$('#returnBack').first().attr('hidden', 'false');
+			$('#loadItems').css('display', 'none');
+			$('#returnBack').css('display', 'block');
 		}
 
 	}

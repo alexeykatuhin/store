@@ -18,7 +18,6 @@
  * 14. News
  * ================================================================================= */
 
-
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
@@ -553,7 +552,7 @@ h2 {
     text-align: center;
     border-top: 1px solid #e1e1e1;
     border-left: 1px solid #e1e1e1;
-    background-color:#f6f6f6;
+    /*background-color:#f6f6f6;*/
 }
 
 .featured .item-details .btnicon a{
@@ -584,7 +583,7 @@ h2 {
 
 
 .mo {
-    display: none;
+	display: block;
 
 }
 
@@ -1264,6 +1263,10 @@ footer .divider{
     font-weight: bold;
     color: #000;
 
+}
+
+#returnBack {
+	display: none
 }
 .loadmore a {
     font-family: 'Open Sans', sans-serif;
