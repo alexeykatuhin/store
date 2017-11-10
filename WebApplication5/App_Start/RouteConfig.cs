@@ -12,16 +12,28 @@ namespace WebApplication5
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			routes.MapRoute(
-	 name: null,
-	 url: "Page{page}",
-	 defaults: new { controller = "Item", action = "List" }
- );
-			routes.MapRoute(
-				name: "Default",
-				url: "{controller}/{action}/{id}",
-				defaults: new { controller = "Item", action = "List", id = UrlParameter.Optional }
-			);
+
+
+			routes.MapRoute(null,
+				"",
+				new
+				{
+					controller = "Item",
+					action = "List",
+					category = (string)null
+				}
+				);
+
+
+			routes.MapRoute(null,
+		  "{category}",
+		  new { controller = "item", action = "List" }
+	  );
+
+			routes.MapRoute(null, "{controller}/{action}");
+
+
+			
 		}
 	}
 }

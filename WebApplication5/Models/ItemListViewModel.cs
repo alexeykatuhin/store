@@ -7,8 +7,9 @@ namespace WebApplication5.Models
 {
 	public class ItemListViewModel
 	{
-		public IEnumerable<Item> Items { get; set; }
+		public IEnumerable<ItemViewModel> Items { get; set; }
 		public int Count { get; set; }
 		//public PagingInfo PagingInfo { get; set; }
+		public string CurrentCategory { get; set; }
 	}
 }

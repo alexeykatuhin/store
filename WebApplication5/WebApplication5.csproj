@@ -177,13 +177,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IItemRepository.cs" />
+    <Compile Include="Abstract\IImageRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Concrete\EfGameRepository.cs" />
+    <Compile Include="Concrete\EfImageRepository.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +195,26 @@
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartIndexViewModel.cs" />
+    <Compile Include="Models\Image.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Image.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>Image.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Image.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Image.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Item.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +234,7 @@
       <DependentUpon>Item.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemListViewModel.cs" />
+    <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +256,9 @@
     <Content Include="Content\css\font\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="Content\css\item.css" />
+    <Content Include="Content\Images\TB2ZWsdXGnyQeBjSsplXXaLWVXa_!!114746002.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Template\ddsmoothmenu.css" />
     <Content Include="Content\Template\images\bestimg1.jpg" />
     <Content Include="Content\Template\images\card-paypal.jpg" />
@@ -269,6 +297,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Image.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Image.edmx</DependentUpon>
+      <LastGenOutput>Image.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Image.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Image.edmx</DependentUpon>
+      <LastGenOutput>Image1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Item.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Item.edmx</DependentUpon>
@@ -295,6 +333,13 @@
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.eot" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.ttf" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.woff" />
+    <EntityDeploy Include="Models\Image.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Image.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Image.edmx.diagram">
+      <DependentUpon>Image.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -326,6 +371,13 @@
     <Content Include="Views\Item\List.cshtml" />
     <Content Include="Views\Item\GetList.cshtml" />
     <Content Include="Views\Item\_Filter.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
+    <Content Include="Views\Item\_ItemSummary.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_Cart.cshtml" />
+    <Content Include="Views\Cart\_GetViewCart.cshtml" />
+    <Content Include="Views\Cart\_GetViewEmptyCart.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApplication5.Models.CartLine>
+	<div class="row ">
+	<div class="col-lg-12 mcarttop">
+		<h2>Корзина</h2>
+	</div>
+</div>
+@foreach (var cart in Model)
+{
+	<div class="mt30 product clearfix">
+		<div class="img pull-left">&nbsp;</div>
+		<div class="details pull-left">
+			<div class="name">@cart.Item.Name</div>
+			<div class="desc">Количество: @cart.Quantity</div>
+			<div class="price">₽@cart.Item.Price</div>
+		</div>
+		<div class="looclose pull-left"><a href="#"><i class="icon-remove"></i></a></div>
+	</div>
+}
+<div class="row mcartbot">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<button type="reset" id="continBtn"  class="btn btn-default" >continue</button>
+	</div>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<form action="@Url.Action("Cart")">
+			<button type="submit" class="btn btn-primary">checkout</button>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		$('#continBtn').click(
+			function() {
+				$('#cartDiv').attr('class', 'floatleft cart dropdown');
+			});
+	});
+</script>

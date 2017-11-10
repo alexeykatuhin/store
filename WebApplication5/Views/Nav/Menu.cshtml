@@ -1,0 +1,30 @@
+﻿@model IEnumerable<string>
+
+
+		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 wfilter">
+				<h2  >Категории</h2>
+				<div class="row dividerml clearfix">&nbsp;</div>
+
+				<div   class="filter clearfix">
+					<div class="filterbox">
+						<ul>
+							@Html.ActionLink("Домой", "List", "Item", null, new { @class = "btn btn-block btn-default btn-lg"})
+							@foreach (var link in Model)
+							{
+
+									@Html.RouteLink(link, new
+							   {
+								   controller = "Item",
+								   action = "List",
+								   category = link
+							   }, new
+							   {
+								   @class = "btn btn-block btn-default btn-lg"
+							   + (link == ViewBag.SelectedCategory ? " btn-primary" : "")
+							   })
+
+							}
+						</ul>
+					</div>
+				</div>
+			</div>

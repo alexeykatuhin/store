@@ -1264,7 +1264,12 @@ footer .divider{
     color: #000;
 
 }
-
+#cartSpan {
+	/*display: none*/
+}
+#continBtn {
+	text-align: center;
+}
 #returnBack {
 	display: none
 }

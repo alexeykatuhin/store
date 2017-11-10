@@ -2,23 +2,5 @@
 
 @foreach (var p in @Model.Items)
 {
-	<div class="col-sm-12 col-md-4 col-lg-4 fitem">
-
-		<div class="item">
-			<a href="#">
-				<img src="~/Content/Template/images/spring_in_mountains-t2.jpg" alt width="100%" />
-			</a>
-			<div class="item-details clearfix">
-
-				<p class="name">@($"\n{p.Name}\n")</p>
-				<p class="desc">@($"\n{p.Description}\n")</p>
-				<div class="buttons">
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price"><div class="old-price">₽@(p.Price * 1.4)</div><div class="new-price">₽@p.Price</div></div>
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart mo"><a href="#" class="themecolor"><i class="icon-shopping-cart"></i></a></div>
-				</div>
-			</div>
-
-
-		</div>
-	</div>
+	@Html.Partial("_ItemSummary", p)
 }
