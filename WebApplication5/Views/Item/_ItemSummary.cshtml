@@ -1,4 +1,4 @@
-﻿@model WebApplication5.Models.Item
+﻿@model WebApplication5.Models.ItemViewModel
 
 <div class="col-sm-12 col-md-4 col-lg-4 fitem">
 	<div class="item">
@@ -6,10 +6,10 @@
 			<img src="~/Content/Template/images/spring_in_mountains-t2.jpg" alt width="100%" />
 		</a>
 		<div class="item-details clearfix">
-			<p class="name">@($"\n{Model.Name}\n")</p>
-			<p class="desc">@($"\n{Model.Description}\n")</p>
+			<p class="name">@($"\n{Model.Item.Name}\n")</p>
+			<p class="desc">@($"\n{Model.Item.Description}\n")</p>
 			<div class="buttons">
-				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price"><div class="old-price">₽@(Model.Price * 1.4)</div><div class="new-price">₽@Model.Price</div></div>
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price"><div class="old-price">₽@(Model.Item.Price * 1.4)</div><div class="new-price">₽@Model.Item.Price</div></div>
 				@*@using (Html.BeginForm("AddToCart", "Cart"))
 				{
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart mo">
@@ -21,7 +21,7 @@
 				
 
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart mo">
-					<a data-ajax="true" href="@Url.Action("AddToCart","Cart", new {Id = Model.Id, returnUrl = Request.Url.PathAndQuery })" class="themecolor">
+					<a data-ajax="true" href="@Url.Action("AddToCart","Cart", new {Id = Model.Item.Id, returnUrl = Request.Url.PathAndQuery })" class="themecolor">
 						<i class="icon-shopping-cart"></i>
 					</a>
 				</div>

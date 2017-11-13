@@ -18,5 +18,6 @@ namespace WebApplication5.Models
         public string ImgUrl { get; set; }
         public string ImgSmallUrl { get; set; }
         public Nullable<int> ItemId { get; set; }
+        public bool IsHead { get; set; }
     }
 }

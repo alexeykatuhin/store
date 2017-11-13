@@ -37,31 +37,42 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _imgRepo.Images.Fi
+					HeadImgUrl = _imgRepo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
 			{
-				Items	= _repo.Items
-				.Where(p => category == null || p.Category == category)
-				.OrderBy(game => game.Id)
-				
-				.Take(pageSize), Count = _repo.Items.Count(p => category == null || p.Category == category),
-				CurrentCategory = category
+				Items	= listView
+				,
+				CurrentCategory = category, Count = _repo.Items.Count(x=> category == null || x.Category == category)
 			}; 
 			return View(model);
 		}
 
 	    public ActionResult GetList(string category)
 	    {
-	
-		    ItemListViewModel model = new ItemListViewModel()
-			{
-				Items = _repo.Items
+		    
+			List<Item> listItems = _repo.Items
 				.Where(p => string.IsNullOrEmpty(category) || p.Category == category)
-	.OrderBy(game => game.Id)
-	.Skip((++curPage - 1) * pageSize)
-	.Take(pageSize), CurrentCategory = category
+				.OrderBy(game => game.Id).Skip((++curPage-1)*pageSize).Take(pageSize).ToList();
+
+
+
+
+
+			List<ItemViewModel> listView = new List<ItemViewModel>();
+			for (int i = 0; i < listItems.Count(); i++)
+			{
+				listView.Add(new ItemViewModel()
+				{
+					Item = listItems[i],
+					HeadImgUrl = _imgRepo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl
+				});
+			}
+			ItemListViewModel model = new ItemListViewModel()
+			{
+				Items = listView
+				, CurrentCategory = category
 			};
 		    return PartialView("GetList",model);
 	    }

@@ -149,3 +149,4 @@ C:\Users\alex\Documents\Visual Studio 2017\git\WebApplication5\obj\Debug\WebAppl
 C:\Users\alex\Documents\Visual Studio 2017\git\WebApplication5\obj\Debug\WebApplication5.pdb
 C:\Users\alex\Documents\Visual Studio 2017\git\WebApplication5\bin\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\kav\Documents\Visual Studio 2015\Projects\WebApplication5\WebApplication5\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\kav\documents\visual studio 2015\Projects\WebApplication5\WebApplication5\bin\Content\Images\TB2ZWsdXGnyQeBjSsplXXaLWVXa_!!114746002.jpg
