@@ -236,6 +236,7 @@
     <Compile Include="Models\ItemListViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +257,7 @@
     <Content Include="Content\css\font\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="Content\css\item.css" />
+    <Content Include="Content\css\slider.css" />
     <Content Include="Content\Images\354748-admin_1280x800.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -394,6 +396,7 @@
     <Content Include="Views\Cart\_CartPreview.cshtml" />
     <Content Include="Views\Cart\_EmptyCartPreview.cshtml" />
     <Content Include="Views\Cart\_EmptyCart.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />

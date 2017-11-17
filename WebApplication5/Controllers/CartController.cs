@@ -16,22 +16,22 @@ namespace WebApplication5.Controllers
 	    {
 		    _repo = repo;
 	    }
-		public ViewResult Index(string returnUrl)
+		public ViewResult Index(Cart cart, string returnUrl)
 		{
 			return View(new CartIndexViewModel
 			{
-				Cart = GetCart(),
+				Cart = cart,
 				ReturnUrl = returnUrl
 			});
 		}
-		public ActionResult AddToCart(int Id, string returnUrl)
+		public ActionResult AddToCart(Cart cart,int Id, string returnUrl)
 		{
 			Item game = _repo.Items
 				.FirstOrDefault(g => g.Id == Id);
 
 			if (game != null)
 			{
-				GetCart().AddItem(game, 1, _repo.Images.First(x=>x.ItemId == Id && x.IsHead).ImgUrl_271_171, _repo.Images.First(x => x.ItemId == Id && x.IsHead).ImgUrl_75_75);
+				cart.AddItem(game, 1, _repo.Images.First(x=>x.ItemId == Id && x.IsHead).ImgUrl_271_171, _repo.Images.First(x => x.ItemId == Id && x.IsHead).ImgUrl_75_75);
 			}
 			var script = @"var prev =parseInt($('#cartSpan').html());
 if (prev == 0){
@@ -40,16 +40,15 @@ $('#cartSpan').css('display', 'block');
 			$('.badge').first().html(prev + 1);";
 			return JavaScript(script);
 		}
-		public ActionResult RemoveFromCart(int Id)
+		public ActionResult RemoveFromCart(Cart cart, int Id)
 		{
 			Item game = _repo.Items
 				.FirstOrDefault(g => g.Id == Id);
 
 			if (game != null)
 			{
-				GetCart().RemoveLine(game);
+				cart.RemoveLine(game);
 			}
-			Cart cart = GetCart();
 			if (cart.Lines != null && cart.Lines.Count() != 0)
 			{
 				return PartialView("_GetViewCart", cart.Lines);
@@ -59,20 +58,19 @@ $('#cartSpan').css('display', 'block');
 				return PartialView("_GetViewEmptyCart");
 			}
 		}
-		public Cart GetCart()
-		{
-			Cart cart = (Cart)Session["Cart"];
-			if (cart == null)
-			{
-				cart = new Cart();
-				Session["Cart"] = cart;
-			}
-			return cart;
-		}
+		//public Cart GetCart()
+		//{
+		//	Cart cart = (Cart)Session["Cart"];
+		//	if (cart == null)
+		//	{
+		//		cart = new Cart();
+		//		Session["Cart"] = cart;
+		//	}
+		//	return cart;
+		//}
 
-	    public ActionResult GetViewCart()
+	    public ActionResult GetViewCart(Cart cart)
 	    {
-		    Cart cart = GetCart();
 		    if (cart.Lines != null && cart.Lines.Count() != 0)
 		    {
 			    return PartialView("_GetViewCart", cart.Lines);
@@ -83,9 +81,9 @@ $('#cartSpan').css('display', 'block');
 		    }
 	    }
 
-	    public string GetQuantity()
+	    public string GetQuantity(Cart cart)
 	    {
-			Cart cart = GetCart();
+	
 			int res = 0;
 			if (cart.Lines != null && cart.Lines.Count() != 0)
 			{
@@ -99,9 +97,9 @@ $('#cartSpan').css('display', 'block');
 
 
 
-		public ActionResult Cart(int Id=0, int newQuantity=0)
+		public ActionResult Cart(Cart cart, int Id=0, int newQuantity=0)
 		{
-			Cart cart = GetCart();
+			
 			if (Id!=0)
 				cart.Lines.First(x => x.Item.Id == Id).Quantity = newQuantity;
 			if (cart.Lines == null || cart.Lines.Count() == 0)
@@ -111,9 +109,8 @@ $('#cartSpan').css('display', 'block');
 
 
 
-		public PartialViewResult CartPreview()
+		public PartialViewResult CartPreview(Cart cart)
 	    {
-			Cart cart = GetCart();
 			int res = 0;
 			if (cart.Lines != null && cart.Lines.Count() != 0)
 			{
@@ -127,16 +124,16 @@ $('#cartSpan').css('display', 'block');
 
 	    }
 
-		public ActionResult RemoveFromBigCart(int Id)
+		public ActionResult RemoveFromBigCart(Cart cart, int Id)
 		{
 			Item game = _repo.Items
 				.FirstOrDefault(g => g.Id == Id);
 
 			if (game != null)
 			{
-				GetCart().RemoveLine(game);
+				cart.RemoveLine(game);
 			}
-			Cart cart = GetCart();
+
 			if (cart.Lines != null && cart.Lines.Count() != 0)
 			{
 				return View("Cart", cart.Lines);
