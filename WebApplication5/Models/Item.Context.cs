@@ -26,5 +26,5 @@ namespace WebApplication5.Models
         }
     
         public virtual DbSet<Item> Item { get; set; }
-    }
+	}
 }

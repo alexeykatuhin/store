@@ -4,10 +4,11 @@
     <EntitySetMapping Name="Image">
       <EntityTypeMapping TypeName="GameDataModel1.Image">
         <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="ImgUrl_75_75" ColumnName="ImgUrl_75_75" />
+          <ScalarProperty Name="ImgUrl_271_171" ColumnName="ImgUrl_271_171" />
           <ScalarProperty Name="IsHead" ColumnName="IsHead" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
-          <ScalarProperty Name="ImgSmallUrl" ColumnName="ImgSmallUrl" />
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
         </MappingFragment>
       </EntityTypeMapping>

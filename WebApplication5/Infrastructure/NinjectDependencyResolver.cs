@@ -32,7 +32,6 @@ namespace WebApplication5.Infrastructure
 		private void AddBindings()
 		{
 			kernel.Bind<IItemRepository>().To<EfGameRepository>();
-			kernel.Bind<IImageRepository>().To<EfImageRepository>();
 		}
 	}
 }

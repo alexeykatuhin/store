@@ -44,4 +44,14 @@ jQuery(document).ready(function() {
 
     
 
+
+	
+
+
+///продолжить из корзины
+		$('#continBtn').click(
+			function() {
+				$('#cartDiv').attr('class', 'floatleft cart dropdown');
+			});
+
 });

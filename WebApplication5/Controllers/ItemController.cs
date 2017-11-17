@@ -12,14 +12,13 @@ namespace WebApplication5.Controllers
     public class ItemController : Controller
     {
 	    private IItemRepository _repo;
-	    private IImageRepository _imgRepo;
+	 
 	    public int pageSize = 2;
 
 		//подгрузка объектов в листинге
 	    private static int curPage;
-	    public ItemController(IItemRepository repo, IImageRepository imgRepo)
+	    public ItemController(IItemRepository repo)
 	    {
-		    _imgRepo = imgRepo;
 		    _repo = repo;
 	    }
 
@@ -37,7 +36,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _imgRepo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl
+					HeadImgUrl = _repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl_271_171
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
@@ -66,7 +65,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _imgRepo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl
+					HeadImgUrl = _repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl_271_171
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()

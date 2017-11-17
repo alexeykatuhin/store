@@ -6,9 +6,10 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ImgSmallUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ItemId" Type="Int32" />
     <Property Name="IsHead" Type="Boolean" Nullable="false" />
+    <Property Name="ImgUrl_271_171" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImgUrl_75_75" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="GameDataEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Image" EntityType="Self.Image" />

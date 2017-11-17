@@ -177,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IItemRepository.cs" />
-    <Compile Include="Abstract\IImageRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -193,6 +192,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\ImageActionLinkHelper.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -256,9 +256,21 @@
     <Content Include="Content\css\font\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="Content\css\item.css" />
-    <Content Include="Content\Images\TB2ZWsdXGnyQeBjSsplXXaLWVXa_!!114746002.jpg">
+    <Content Include="Content\Images\354748-admin_1280x800.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\354748-admin_1280x800_270.jpg" />
+    <Content Include="Content\Images\354748-admin_1280x800_75.jpg" />
+    <Content Include="Content\Images\62.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\62_270.jpg" />
+    <Content Include="Content\Images\62_75.jpg" />
+    <Content Include="Content\Images\dolya--61.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\dolya--61_270.jpg" />
+    <Content Include="Content\Images\dolya--61_75.jpg" />
     <Content Include="Content\Template\ddsmoothmenu.css" />
     <Content Include="Content\Template\images\bestimg1.jpg" />
     <Content Include="Content\Template\images\card-paypal.jpg" />
@@ -378,6 +390,10 @@
     <Content Include="Views\Cart\_GetViewCart.cshtml" />
     <Content Include="Views\Cart\_GetViewEmptyCart.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\_CartItem.cshtml" />
+    <Content Include="Views\Cart\_CartPreview.cshtml" />
+    <Content Include="Views\Cart\_EmptyCartPreview.cshtml" />
+    <Content Include="Views\Cart\_EmptyCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />

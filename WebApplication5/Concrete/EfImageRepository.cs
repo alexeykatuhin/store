@@ -7,10 +7,10 @@ using WebApplication5.Models;
 
 namespace WebApplication5.Concrete
 {
-	public class EfImageRepository: IImageRepository
-	{
-		GameDataEntities1 _ctx = new GameDataEntities1();
-		public IEnumerable<Image> Images => _ctx.Image;
+	//public class EfImageRepository: IImageRepository
+	//{
+	//	//GameDataEntities1 _ctx = new GameDataEntities1();
+	//	//public IEnumerable<Image> Images => _ctx.Image;
 	
-	}
+	//}
 }

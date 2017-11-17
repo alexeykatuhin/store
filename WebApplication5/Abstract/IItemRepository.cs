@@ -9,5 +9,6 @@ namespace WebApplication5.Abstract
 	public interface IItemRepository
 	{
 		IEnumerable<Item> Items { get; }
+		IEnumerable<Image> Images { get; }
 	}
 }

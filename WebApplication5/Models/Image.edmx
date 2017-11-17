@@ -11,9 +11,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImgUrl" Type="nvarchar(max)" />
-          <Property Name="ImgSmallUrl" Type="nvarchar(max)" />
+          <Property Name="ImgUrl_271_171" Type="nvarchar(max)" />
           <Property Name="ItemId" Type="int" />
           <Property Name="IsHead" Type="bit" Nullable="false" />
+          <Property Name="ImgUrl_75_75" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="Хранилище GameDataModel1Container">
           <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
@@ -28,9 +29,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ImgSmallUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ItemId" Type="Int32" />
           <Property Name="IsHead" Type="Boolean" Nullable="false" />
+          <Property Name="ImgUrl_271_171" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgUrl_75_75" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="GameDataEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Image" EntityType="Self.Image" />
@@ -44,10 +46,11 @@
           <EntitySetMapping Name="Image">
             <EntityTypeMapping TypeName="GameDataModel1.Image">
               <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImgUrl_75_75" ColumnName="ImgUrl_75_75" />
+                <ScalarProperty Name="ImgUrl_271_171" ColumnName="ImgUrl_271_171" />
                 <ScalarProperty Name="IsHead" ColumnName="IsHead" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
-                <ScalarProperty Name="ImgSmallUrl" ColumnName="ImgSmallUrl" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
               </MappingFragment>
             </EntityTypeMapping>

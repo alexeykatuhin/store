@@ -24,6 +24,11 @@ body {
     color: #707070;
 }
 
+
+.underlineRef {
+	text-decoration: underline;
+}
+
 a {
     color: #707070;
 }
@@ -523,7 +528,8 @@ h2 {
     border-radius: 4px;
 
     margin-top: -8px;
-    padding-top: 8px;
+    /*padding-top: 8px;*/
+	padding-top: 0px;
 }
 
 .featured .item-details p{
@@ -2600,4 +2606,5 @@ table.checkout .card input[type=submit] {
     .newsitem.activenews, .newsitem:hover {
         margin-right: 0;
     }
+	
 }
