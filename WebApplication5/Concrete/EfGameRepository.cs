@@ -13,5 +13,7 @@ namespace WebApplication5.Concrete
 		public IEnumerable<Item> Items => _ctx.Item;
 		GameDataEntities1 _ctx1 = new GameDataEntities1();
 		public IEnumerable<Image> Images => _ctx1.Image;
+		GameDataEntities4 _ctx2 = new GameDataEntities4();
+		public IEnumerable<FullItem> FullItems => _ctx2.FullItem;
 	}
 }

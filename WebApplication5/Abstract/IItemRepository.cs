@@ -10,5 +10,6 @@ namespace WebApplication5.Abstract
 	{
 		IEnumerable<Item> Items { get; }
 		IEnumerable<Image> Images { get; }
+		IEnumerable<FullItem> FullItems { get; }
 	}
 }

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище GameDataModel3Container" CdmEntityContainer="GameDataEntities3">
+    <EntitySetMapping Name="ItemFull">
+      <EntityTypeMapping TypeName="GameDataModel3.ItemFull">
+        <MappingFragment StoreEntitySet="ItemFull">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

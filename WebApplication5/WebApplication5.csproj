@@ -197,6 +197,24 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
+    <Compile Include="Models\FullItem.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullItem.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullItem.cs">
+      <DependentUpon>FullItem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullItem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullItem.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FullItem1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullItem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Image.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,6 +251,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Item.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemBigViewModel.cs" />
     <Compile Include="Models\ItemListViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -267,12 +286,23 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\62_270.jpg" />
+    <Content Include="Content\Images\62_536.jpg" />
     <Content Include="Content\Images\62_75.jpg" />
     <Content Include="Content\Images\dolya--61.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\dolya--61_270.jpg" />
     <Content Include="Content\Images\dolya--61_75.jpg" />
+    <Content Include="Content\Images\slider\1.jpg" />
+    <Content Include="Content\Images\slider\1_thumb.jpg" />
+    <Content Include="Content\Images\slider\2.jpg" />
+    <Content Include="Content\Images\slider\2_thumb.jpg" />
+    <Content Include="Content\Images\slider\3.jpg" />
+    <Content Include="Content\Images\slider\3_thumb.jpg" />
+    <Content Include="Content\Images\турник2_536.jpg" />
+    <Content Include="Content\Images\турник2_75.jpg" />
+    <Content Include="Content\Images\турник3_536.jpg" />
+    <Content Include="Content\Images\турник3_75.jpg" />
     <Content Include="Content\Template\ddsmoothmenu.css" />
     <Content Include="Content\Template\images\bestimg1.jpg" />
     <Content Include="Content\Template\images\card-paypal.jpg" />
@@ -306,11 +336,22 @@
     <Content Include="Content\Template\js\jquery.min.js" />
     <Content Include="Content\Template\js\respond.min.js" />
     <Content Include="Content\Template\js\retina.js" />
+    <Content Include="Content\Template\js\slider.js" />
     <Content Include="Content\Template\slimbox2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\FullItem.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FullItem.edmx</DependentUpon>
+      <LastGenOutput>FullItem.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FullItem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FullItem.edmx</DependentUpon>
+      <LastGenOutput>FullItem1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Image.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Image.edmx</DependentUpon>
@@ -353,6 +394,13 @@
     </EntityDeploy>
     <Content Include="Models\Image.edmx.diagram">
       <DependentUpon>Image.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\FullItem.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FullItem.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FullItem.edmx.diagram">
+      <DependentUpon>FullItem.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -397,6 +445,7 @@
     <Content Include="Views\Cart\_EmptyCartPreview.cshtml" />
     <Content Include="Views\Cart\_EmptyCart.cshtml" />
     <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Item\ItemBig.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />

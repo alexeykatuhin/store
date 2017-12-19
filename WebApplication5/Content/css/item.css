@@ -1100,13 +1100,13 @@ footer .divider{
     display:inline-block;
     width:19px;
     height:17px;
-    background: url(../images/checkbox.png) 0 0 no-repeat;
+    background: url(/Content/Template/images/checkbox.png) 0 0 no-repeat;
     vertical-align:middle;
     cursor:pointer;
 }
 
 .filterbox input[type="checkbox"]:checked + label.box span {
-    background: url(../images/checkbox.png) -19px 0 no-repeat;
+    background: url(~/Content/Template/images/checkbox.png) -19px 0 no-repeat;
 }
 
 .filterbox input[type="checkbox"]:checked ~ label.text,

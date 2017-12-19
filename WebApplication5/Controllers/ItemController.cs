@@ -75,5 +75,17 @@ namespace WebApplication5.Controllers
 			};
 		    return PartialView("GetList",model);
 	    }
+
+	    public ActionResult ItemBig(int id)
+	    {
+		    Item item = _repo.Items.First(x => x.Id == id);
+		    ItemBigViewModel model = new ItemBigViewModel()
+		    {
+				FullItems = _repo.FullItems.Where(x=>x.ItemId == id).ToList(),
+				Item = item,
+				Images = _repo.Images.Where(x=>x.ItemId == id).ToList()
+		    };
+		    return View(model);
+	    }
 	}
 }
