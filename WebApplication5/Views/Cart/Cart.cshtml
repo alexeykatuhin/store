@@ -52,15 +52,18 @@
 				</form>
 			</div>*@
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-lg-offset-9 col-md-offset-8  totalcheckout">
-			<form action="#">
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<p class="total">Total </p>
-					<p class="totalam">₽@(totalCost)</p>
-				</div>
-				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chbtn">
-					<input type="submit" value="Checkout" class="btn btn-primary">
-				</div>
-			</form>
+		@using (Html.BeginForm("Checkout", "Cart", FormMethod.Get))
+		{
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<p class="total">Total </p>
+				<p class="totalam">₽@(totalCost)</p>
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chbtn">
+
+				<input type="submit" value="Checkout" class="btn btn-primary">
+
+			</div>
+		}
 		</div>
 	</section>
 </div>

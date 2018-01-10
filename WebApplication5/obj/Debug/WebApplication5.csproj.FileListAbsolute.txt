@@ -151,4 +151,4 @@ C:\Users\kav\Documents\Visual Studio 2015\Projects\WebApplication5\WebApplicatio
 C:\Users\kav\documents\visual studio 2015\Projects\WebApplication5\WebApplication5\bin\Content\Images\dolya--61.jpg
 C:\Users\kav\Documents\Visual Studio 2015\Projects\WebApplication5\WebApplication5\bin\Content\Images\354748-admin_1280x800.jpg
 C:\Users\kav\Documents\Visual Studio 2015\Projects\WebApplication5\WebApplication5\bin\Content\Images\62.jpg
-C:\Users\kav\documents\visual studio 2015\Projects\WebApplication5\WebApplication5\obj\Debug\WebApplication5.csprojResolveAssemblyReference.cache
+C:\Users\kav\Documents\Visual Studio 2015\Projects\WebApplication5\WebApplication5\obj\Debug\WebApplication5.csprojResolveAssemblyReference.cache

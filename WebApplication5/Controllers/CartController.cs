@@ -11,9 +11,11 @@ namespace WebApplication5.Controllers
     public class CartController : Controller
     {
 	    private IItemRepository _repo;
+	    private IOrderProcessor _orderProcessor;
 
-	    public CartController(IItemRepository repo)
+	    public CartController(IItemRepository repo, IOrderProcessor orderProcessor)
 	    {
+		    _orderProcessor = orderProcessor; 
 		    _repo = repo;
 	    }
 		public ViewResult Index(Cart cart, string returnUrl)
@@ -144,5 +146,31 @@ $('#cartSpan').css('display', 'block');
 			}
 		}
 
+		[HttpGet]
+	    public ViewResult Checkout()
+		{
+			return View(new ShippingDetails());
+		}
+
+
+		[HttpPost]
+		public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+		{
+			if (!cart.Lines.Any())
+			{
+				ModelState.AddModelError("", "Извините, ваша корзина пуста!");
+			}
+
+			if (ModelState.IsValid)
+			{
+				_orderProcessor.ProcessOrder(cart, shippingDetails);
+				cart.Clear();
+				return View("Completed");
+			}
+			else
+			{
+				return View(shippingDetails);
+			}
+		}
 	}
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Item">
       <EntityTypeMapping TypeName="GameDataModel.Item">
         <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Category" ColumnName="Category" />

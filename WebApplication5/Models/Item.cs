@@ -11,13 +11,29 @@ namespace WebApplication5.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Item
+	using System.Web.Mvc;
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Item
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
-        public Nullable<double> Price { get; set; }
+		[HiddenInput(DisplayValue = false)]
+		public int Id { get; set; }
+		[Display(Name = "Название")]
+		[Required(ErrorMessage = "Пожалуйста, введите название наименование")]
+		public string Name { get; set; }
+		[Display(Name = "Категория")]
+		[Required(ErrorMessage = "Пожалуйста, укажите категорию")]
+		public string Category { get; set; }
+		[DataType(DataType.MultilineText)]
+		[Display(Name = "Описание")]
+		[Required(ErrorMessage = "Пожалуйста, введите описание")]
+		public string Description { get; set; }
+		[Display(Name = "Цена (руб)")]
+		[Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
+		public Nullable<double> Price { get; set; }
+		[DataType(DataType.MultilineText)]
+		[Display(Name = "Полное описание")]
+		[Required(ErrorMessage = "Пожалуйста, введите описание")]
+		public string FullDescription { get; set; }
     }
 }

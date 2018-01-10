@@ -1423,6 +1423,9 @@ footer .divider{
     background-color:#000000;
 }
 
+.green {
+	background-color: green;
+}
 
 .productinfo .buttons {
     margin: 0;

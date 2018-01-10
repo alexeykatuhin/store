@@ -9,6 +9,7 @@
     <Property Name="Category" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Price" Type="float" />
+    <Property Name="FullDescription" Type="nvarchar(max)" />
   </EntityType>
   <EntityContainer Name="Хранилище GameDataModelContainer">
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
