@@ -30,7 +30,16 @@ namespace WebApplication5.Concrete
 			}
 			_ctx.SaveChanges();
 		}
-
+		public Item DeleteItem(int Id)
+		{
+			Item dbEntry = _ctx.Item.Find(Id);
+			if (dbEntry != null)
+			{
+				_ctx.Item.Remove(dbEntry);
+				_ctx.SaveChanges();
+			}
+			return dbEntry;
+		}
 		public IEnumerable<Image> Images => _ctx1.Image;
 		GameDataEntities4 _ctx2 = new GameDataEntities4();
 		public IEnumerable<FullItem> FullItems => _ctx2.FullItem;

@@ -10,7 +10,9 @@ namespace WebApplication5.Abstract
 	{
 		IEnumerable<Item> Items { get; }
 		void SaveItem(Item item);
+		Item DeleteItem(int Id);
 		IEnumerable<Image> Images { get; }
 		IEnumerable<FullItem> FullItems { get; }
+
 	}
 }

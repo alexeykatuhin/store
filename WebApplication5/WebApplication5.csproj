@@ -176,6 +176,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAuthProvider.cs" />
     <Compile Include="Abstract\IItemRepository.cs" />
     <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Concrete\EfGameRepository.cs" />
     <Compile Include="Concrete\EfImageRepository.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
+    <Compile Include="Concrete\FormAuthProvider.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -8,6 +8,7 @@ using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
+	[Authorize]
     public class AdminController : Controller
     {
 	    private IItemRepository _repo;
@@ -42,5 +43,19 @@ namespace WebApplication5.Controllers
 				return View(game);
 			}
 		}
+
+	    public ViewResult Create()
+	    {
+		    return View("Edit", new Item());
+	    }
+
+	    [HttpPost]
+	    public ActionResult Delete(int Id)
+	    {
+		    Item deletedItem = _repo.DeleteItem(Id);
+		    if (deletedItem != null)
+			    TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedItem.Name);
+		    return RedirectToAction("Index");
+	    }
 	}
 }
