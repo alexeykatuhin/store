@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,6 +57,29 @@ namespace WebApplication5.Controllers
 		    if (deletedItem != null)
 			    TempData["message"] = string.Format("Товар \"{0}\" был удален", deletedItem.Name);
 		    return RedirectToAction("Index");
+	    }
+
+	    public ActionResult AddImage(int Id)
+	    {
+		    WebApplication5.Models.Image img = _repo.Images.FirstOrDefault(x => x.ItemId == Id);
+		    return View(img);
+	    }
+
+	    public ActionResult GetPhoto(int Id,HttpPostedFileBase Image)
+	    {
+		    
+			    string filename = System.IO.Path.GetFileName(Image.FileName);
+			    if (System.IO.File.Exists("~/Content/Images/" + filename))
+				    filename = Image.GetHashCode().ToString();
+				Image.SaveAs(Server.MapPath("~/Content/Images/" + filename));
+				
+		    _repo.SaveImg(Id, "/Content/Images/" + filename);
+
+			
+
+			
+
+		    return View("AddImage", _repo.Images.First(x=>x.ItemId==Id));
 	    }
 	}
 }

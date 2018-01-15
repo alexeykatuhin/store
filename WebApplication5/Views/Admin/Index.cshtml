@@ -17,7 +17,8 @@
 				<th class="text-right">ID</th>
 				<th>Название</th>
 				<th class="text-right">Цена</th>
-				<th class="text-center">Действия</th>
+				<th class="text-center">Удаление</th>
+				<th class="text-center">Добавить изображение</th>
 			</tr>
 			@foreach (var item in Model)
 			{
@@ -30,8 +31,17 @@
 						{
 							@Html.Hidden("Id", item.Id)
 							<input type="submit"
+							       class="btn btn-default btn-xs"
+							       value="Удалить" />
+						}
+					</td>
+					<td class="text-center">
+						@using (Html.BeginForm("AddImage", "Admin"))
+						{
+							@Html.Hidden("Id", item.Id)
+							<input type="submit"
 								   class="btn btn-default btn-xs"
-								   value="Удалить" />
+								   value="Добавить изображения" />
 						}
 					</td>
 				</tr>

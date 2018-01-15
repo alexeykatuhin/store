@@ -42,6 +42,22 @@ namespace WebApplication5.Concrete
 		}
 		public IEnumerable<Image> Images => _ctx1.Image;
 		GameDataEntities4 _ctx2 = new GameDataEntities4();
+
+		public void SaveImg(int id,string url, string res = null)
+		{
+			if (_ctx1.Image.Any(x => x.ItemId == id))
+			{
+				Image img = _ctx1.Image.First(x => x.ItemId == id);
+				switch (res)
+				{
+					case null:
+						img.ImgUrl = url;
+						break;
+				}
+				_ctx1.SaveChanges();
+			}
+		}
+
 		public IEnumerable<FullItem> FullItems => _ctx2.FullItem;
 	}
 }
