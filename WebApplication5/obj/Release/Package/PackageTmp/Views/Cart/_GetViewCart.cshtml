@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication5.Models.CartLine>
+	<div id="cartView">
+	<div class="row ">
+		<div class="col-lg-12 mcarttop">
+			<h2>Корзина</h2>
+		</div>
+	</div>
+	@foreach (var cart in Model)
+	{
+		<div class="mt30 product clearfix">
+			<div class="img pull-left clipImg">
+				<img  src="@cart.ImageUrl" />
+				@*<img class="clipImg" src="~/Content/Images/1442078333_maxresdefault-75x75.jpg" />*@
+			</div>
+			<div class="details pull-left">
+				<div class="name">@cart.Item.Name</div>
+				<div class="desc">Количество: @cart.Quantity</div>
+				<div class="price">₽@cart.Item.Price</div>
+			</div>
+			<div class="looclose pull-left"><a data-ajax="true" data-ajax-update="#cartView" data-ajax-success="RefreshCart" href="@Url.Action("RemoveFromCart", new { Id = cart.Item.Id})"><i class="icon-remove"></i></a></div>
+		</div>
+	}
+	<div class="row mcartbot">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<button type="reset" id="continBtn" class="btn btn-default">continue</button>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<form action="@Url.Action("Cart")">
+				<button type="submit" class="btn btn-primary">checkout</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function RefreshCart() {
+		$.ajax({
+			url: '@Url.Action("GetQuantity")',
+			success: function(data) {
+				if (parseInt(data) == 0) {
+					$('.badge').first().html(data);
+					$('#cartSpan').css('display', 'none');
+				} else {
+					$('.badge').first().html(data);
+				}
+				
+			}
+		});
+		
+		}
+
+			
+</script>

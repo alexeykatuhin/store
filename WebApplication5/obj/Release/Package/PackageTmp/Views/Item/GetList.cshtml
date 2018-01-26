@@ -1,0 +1,6 @@
+﻿@model WebApplication5.Models.ItemListViewModel
+
+@foreach (var p in @Model.Items)
+{
+	@Html.Partial("_ItemSummary", p)
+}

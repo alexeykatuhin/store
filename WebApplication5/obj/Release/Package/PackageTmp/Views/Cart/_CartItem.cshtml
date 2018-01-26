@@ -1,0 +1,73 @@
+﻿@model WebApplication5.Models.CartLine
+
+
+
+@{
+	int val = Model.Quantity;
+}
+<tr>
+	<td class="cartprodinfo">
+		<div class="img pull-left">
+			<img src="@Model.ImgUrl_271_171" alt="" width="100%">
+		</div>
+
+		<div class="info pull-left">
+			<p class="caption14">@Model.Item.Description</p>
+			<p class="desc">
+				@Model.Item.Description
+			</p>
+		</div>
+	</td>
+	<td class="cartsize">
+		<p class="caption14">Размер</p>
+		<p>XL</p>
+	</td>
+	<td class="cartcolor">
+		<p class="caption14">Цвет</p>
+		<p><span class="colorop red">&nbsp;</span> Red</p>
+	</td>
+	<td class="cartqty">
+		<p class="caption14">Количество</p>
+		@using (Html.BeginForm("Cart", "Cart", FormMethod.Post))
+		{
+			<input type="hidden" value="@Model.Item.Id" name="Id" />
+			<input name="newQuantity"  type="text" class="qty" value="@Model.Quantity">
+			<br>
+			<input type="submit" value="Update"/>
+
+		}
+	</td>
+	<td class="cartbuttons">
+		<div class="buttons clearfix">
+			<div class="col-xs-9 col-sm-12 col-md-9 col-lg-9 price"><div class="old-price">₽@(Model.Item.Price * 1.4)</div><div class="new-price">₽@(Model.Item.Price)</div></div>
+			@*<div class="col-xs-3 col-sm-6 col-md-3 col-lg-3 btnicon like"><a href="#"><i class="icon-heart"></i></a></div>
+			<div class="col-xs-3 col-sm-6 col-md-3 col-lg-3 btnicon refresh"><a href="#"><i class="icon-refresh"></i></a></div>*@
+			<div class="col-xs-3 col-sm-12 col-md-3 col-lg-3 btnicon cart">
+				@*<a data-ajax="true" data-ajax-update="#cart" href="@Url.Action("RemoveFromBigCart", new {Id = @Model.Item.Id})"><i class="icon-remove"></i></a>*@
+				<a href="@Url.Action("RemoveFromBigCart", new {Id = @Model.Item.Id})"><i class="icon-remove"></i></a>
+			</div>
+		</div>
+
+		@*<div class="filterbox">
+			<input type="checkbox" id="g1"><label for="g1" class="box"><span>&nbsp;</span></label><label for="g1" class="text">Gift wrap this Item</label>
+		</div>*@
+	</td>
+</tr>
+
+<script type="text/javascript">
+	jQuery(document).ready(function () {
+
+		@*$("#cartItem".concat(@Model.Item.Id)).click(function () {
+
+			var quant = $('#cartInp'.concat(@Model.Item.Id)).val();
+
+			var id = @Model.Item.Id;
+			var _data = "?Id=".concat(id, "&newQuantity=", quant);
+			alert(_data);
+			$.ajax({
+				url: "@Url.Action("Cart", new {Id = @Model.Item.Id})",
+				data: _data
+		});
+		});*@
+	});
+</script>

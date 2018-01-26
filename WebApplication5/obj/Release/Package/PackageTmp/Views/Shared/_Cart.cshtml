@@ -1,0 +1,25 @@
+﻿<div id="cartDiv"  class="floatleft cart dropdown">
+	<a id="cartRef" data-ajax="true"  data-ajax-update="#cartContainer" href="@Url.Action("GetViewCart", "Cart")"  data-toggle="dropdown"><i class="icon-shopping-cart"></i></a><span id="cartSpan" class="badge">0</span>
+	<div  id="cartMenu"  class="dropdown-menu">
+		<form role="form">
+			<div class="clearfix" id="cartContainer">
+
+
+
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+	
+		$('#cartSpan').load('@Url.Action("GetQuantity", "Cart")');
+	});
+	$(window).load(function () {
+	
+		var prev = parseInt($('#cartSpan').html());
+		if (prev == 0) {
+			$('#cartSpan').css('display', 'none');}
+	});
+
+</script>

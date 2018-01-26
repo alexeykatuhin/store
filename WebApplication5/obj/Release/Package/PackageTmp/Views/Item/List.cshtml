@@ -1,0 +1,64 @@
+﻿@model WebApplication5.Models.ItemListViewModel
+@{
+	ViewBag.Title = "Товары";
+	int curPage = 1;
+}
+<section class="content row">
+	<!-- Featured items -->
+	<section class="featured clearfix">
+		<div class="col-xs-12 col-sm-6 col-md-9 col-lg-9 wproducts pull-right">
+			<div class="row">
+				<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+					<h2>The First collection</h2>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 listgrid">
+					<a><img src="~/Content/Template/images/img-tr.png" alt class="grid active"></a><a><img src="~/Content/Template/images/img-tr.png" alt class="list "></a>
+				</div>
+			</div>
+			<div class="row dividermr">&nbsp;</div>
+			<div id="resss" class="row itemlist">
+				@foreach (var p in @Model.Items)
+				{
+					@Html.Partial("_ItemSummary", p)
+				}
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-0 col-md-6 col-md-offset-2 col-lg-4 col-lg-offset-4">
+					<div id="loadItems" class="loadmore">
+						<a data-ajax="true" data-ajax-mode="after" data-ajax-success="OnSuccess" data-ajax-update="#resss" href="@Url.Action("GetList", new {category = Model.CurrentCategory})">
+							<i class="icon-cogs"></i>
+							Показать еще
+						</a>
+
+					</div>
+					<div id="returnBack" class="loadmore">
+						<a href="@Url.Action("List", new {category = Model.CurrentCategory})">
+							<i class="icon-cogs"></i>
+							Вернуться
+						</a>
+						@*<a href="#">
+								<i class="icon-cogs"></i>
+								Load More items
+							</a>*@
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4 itemcount">
+					<b id="itemsCount">@Model.Items.Count()</b> /@Model.Count товаров
+				</div>
+			</div>
+
+		</div>
+		@Html.Action("Menu", "Nav")
+	</section>
+</section>
+
+<script type="text/javascript">
+			function OnSuccess() {
+				$('#itemsCount').html($(".item").length);
+				if ($(".item").length == @Model.Count) {
+					$('#loadItems').css('display', 'none');
+				$('#returnBack').css('display', 'block');
+			}
+
+			}
+</script>

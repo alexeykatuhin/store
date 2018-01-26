@@ -1,0 +1,14 @@
+﻿@model List<string>
+	@{
+		if (Model != null && Model.Count != 0)
+		{
+			<h3>Color</h3>
+			<ul>
+				@foreach (string s in Model)
+				{<li><input type="radio" name="color" id="c1"><label for="c1" class="box"><span>&nbsp;</span></label><label for="c1" class="text"> <span class="@string.Format("colorop {0}",s.ToLower())">&nbsp;</span> @s</label></li>
+
+				}
+			</ul>
+		}
+	}
+

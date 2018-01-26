@@ -8,7 +8,7 @@
 
 <div class="panel">
 	<div class="panel-heading">
-		<h3>Редактирование игры «@Model.Name»</h3>
+		<h3>Редактирование Товара «@Model.Name»</h3>
 	</div>
 
 	@using (Html.BeginForm("Edit", "Admin"))
@@ -35,15 +35,19 @@
 					</div>
 				}
 			}
+	
+
 		</div>
 		<div class="panel-footer">
 			<input type="submit" value="Сохранить" class="btn btn-primary" />
-			@Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+			@Html.ActionLink("Вернуться к списку", "Index", null, new
 	   {
 		   @class = "btn btn-default"
 	   })
 		</div>
 	}
+	
+
 </div>
 
  

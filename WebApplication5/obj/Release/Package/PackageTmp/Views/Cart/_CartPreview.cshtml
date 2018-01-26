@@ -1,0 +1,26 @@
+﻿@model int
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		$('#cartSpan').css('display', 'block');
+	});
+
+
+</script>
+
+
+
+<div id="cartDiv"  class="floatleft cart dropdown">
+	<a id="cartRef" data-ajax="true"  data-ajax-update="#cartContainer" href="@Url.Action("GetViewCart", "Cart")"  data-toggle="dropdown"><i class="icon-shopping-cart"></i></a><span id="cartSpan" class="badge">@Model</span>
+	<div  id="cartMenu"  class="dropdown-menu">
+		<form role="form">
+			<div class="clearfix" id="cartContainer">
+
+
+
+			</div>
+		</form>
+	</div>
+</div>
+
+

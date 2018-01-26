@@ -1,0 +1,29 @@
+﻿<div class="container">
+	<section class="content row ">
+
+		<table class="checkout col-lg-12">
+			<tbody>
+			<tr>
+				<th>Оформление заказа</th>
+			</tr>
+				<tr>
+					<td class="address">
+						<div>
+							<p class="caption14">Введите данные</p>
+							@*<input type="text" class="form-control" placeholder="Full Name">*@
+							@using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+							{ 
+								@Html.ValidationSummary();
+								<input type="text" name="Name" class="form-control" placeholder="Полное имя"/>
+								<input type="text" name="Line1" class="form-control" placeholder="Адрес доставки">
+								<input type="text" name="City" class="form-control" placeholder="Город">
+								<input type="text" name="Country" class="form-control" placeholder="Страна">
+								<input type="submit" value="Done" class="btn btn-primary">
+							}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>

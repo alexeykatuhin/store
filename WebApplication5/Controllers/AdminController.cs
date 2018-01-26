@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication5.Abstract;
+using WebApplication5.Classes;
 using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
@@ -21,7 +23,19 @@ namespace WebApplication5.Controllers
         // GET: Admin
 	    public ViewResult Index()
 	    {
-		    return View(_repo.Items);
+		    List<ItemBigViewModel> viewModel = new List<ItemBigViewModel>();
+		    List <Item> lstItm= _repo.Items.ToList();
+		    foreach (Item item in lstItm)
+		    {
+			    viewModel.Add(new ItemBigViewModel()
+			    {
+				    Item = item,
+					FullItems = _repo.FullItems.Where(x=>x.ItemId == item.Id).ToList(),
+					Images = _repo.Images.Where(x=>x.ItemId == item.Id).ToList()
+			    });
+
+		    }
+		    return View(viewModel);
 	    }
 
 	    public ViewResult Edit(int Id)
@@ -35,8 +49,10 @@ namespace WebApplication5.Controllers
 			if (ModelState.IsValid)
 			{
 				_repo.SaveItem(game);
+				if (!_repo.Images.Any(x=>x.Id == game.Id))
+					_repo.AddImg(game.Id, "/Content/Images/NoImg.jpg", true);
 				TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", game.Name);
-				return RedirectToAction("Index");
+				return RedirectToAction("Edit", game);
 			}
 			else
 			{
@@ -59,27 +75,45 @@ namespace WebApplication5.Controllers
 		    return RedirectToAction("Index");
 	    }
 
-	    public ActionResult AddImage(int Id)
+	    public ActionResult Images(int Id)
 	    {
-		    WebApplication5.Models.Image img = _repo.Images.FirstOrDefault(x => x.ItemId == Id);
+		    IEnumerable<Image> img = _repo.Images.Where(x => x.ItemId == Id);
 		    return View(img);
 	    }
 
-	    public ActionResult GetPhoto(int Id,HttpPostedFileBase Image)
+	    public ActionResult AddPhoto(int ItemId, int Id=0)
 	    {
-		    
-			    string filename = System.IO.Path.GetFileName(Image.FileName);
-			    if (System.IO.File.Exists("~/Content/Images/" + filename))
-				    filename = Image.GetHashCode().ToString();
-				Image.SaveAs(Server.MapPath("~/Content/Images/" + filename));
-				
-		    _repo.SaveImg(Id, "/Content/Images/" + filename);
-
-			
-
-			
-
-		    return View("AddImage", _repo.Images.First(x=>x.ItemId==Id));
+		    Image img = Id == 0 ? new Image() {Id=0, ItemId = ItemId, ImgUrl = "/Content/Images/NoImg.jpg", ImgUrl_271_171 = "/Content/Images/NoImg271_171.jpg", ImgUrl_75_75 = "/Content/Images/NoImg75_75.jpg", IsHead = false} : _repo.Images.FirstOrDefault(x => x.Id == Id); 
+		    return View(img);
 	    }
+
+
+		public ActionResult GetPhoto(int ItemId, int Id, bool IsHead, HttpPostedFileBase Image)
+		{
+			if (Id != 0)
+			{
+				Models.Image img = _repo.Images.First(x => x.Id == Id);
+				System.IO.File.Delete(img.ImgUrl);
+				System.IO.File.Delete(img.ImgUrl_271_171);
+				System.IO.File.Delete(img.ImgUrl_75_75);
+
+			}
+
+			string fileName = System.IO.File.Exists("~/Content/Images/" + Image.FileName)
+			? ItemId.ToString() + "_" + Id.ToString() + Image.FileName
+			: Image.FileName;
+
+		
+			Image.SaveAs(Server.MapPath("~/Content/Images/" + fileName));
+
+			_repo.AddImg(ItemId, "/Content/Images/" + fileName,IsHead,Id, fileName);
+
+			Models.Image newImg = Id == 0 ? _repo.Images.Last() : _repo.Images.First(x => x.Id == Id);
+
+
+
+
+			return View("AddPhoto", newImg);
+		}
 	}
 }

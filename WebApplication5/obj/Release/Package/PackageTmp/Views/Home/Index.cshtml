@@ -1,0 +1,221 @@
+﻿<script src="~/Content/Template/js/slider.js"></script>
+<link href="~/Content/css/slider.css" rel="stylesheet" />
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+
+      // Slideshow 1
+      $("#slider1").responsiveSlides({
+        maxwidth: 800,
+        speed: 800
+      });
+
+      // Slideshow 2
+      $("#slider2").responsiveSlides({
+        auto: false,
+        pager: true,
+        speed: 300,
+        maxwidth: 540
+      });
+
+      // Slideshow 3
+      $("#slider3").responsiveSlides({
+        manualControls: '#slider3-pager',
+        maxwidth: 540
+      });
+
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+        auto: false,
+        pager: false,
+        nav: true,
+        speed: 500,
+        namespace: "callbacks",
+        before: function () {
+          $('.events').append("<li>before event fired.</li>");
+        },
+        after: function () {
+          $('.events').append("<li>after event fired.</li>");
+        }
+      });
+
+    });
+</script>
+
+<section class="content productinfo row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2>Category - Women's products</h2></div>
+
+
+	
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+		
+		<!-- Slideshow 3 -->
+
+		<ul class="rslides" id="slider3">
+			<li>
+				<img src="~/Content/Images/354748-admin_1280x800.jpg" />
+			</li>
+			<li>
+				<img src="~/Content/Images/slider/2.jpg" />
+			</li>
+			<li>
+				<img src="~/Content/Images/slider/3.jpg" />
+			</li>
+			<li>
+				<img src="~/Content/Images/slider/3.jpg" />
+			</li>
+			<li>
+				<img src="~/Content/Images/slider/3.jpg" />
+			</li>
+		</ul>
+
+		<!-- Slideshow 3 Pager -->
+
+		<ul id="slider3-pager">
+			<li>
+				<a href="#">
+
+					<img src="~/Content/Images/slider/1_thumb.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="~/Content/Images/slider/2_thumb.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="#">
+
+					<img src="~/Content/Images/slider/3_thumb.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="#">
+
+					<img src="~/Content/Images/slider/3_thumb.jpg" />
+				</a>
+			</li>
+			<li>
+				<a href="#">
+
+					<img src="~/Content/Images/slider/3_thumb.jpg" />
+				</a>
+			</li>
+		</ul>
+
+		
+
+	</div>
+
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 desc">
+		<p class="caption14">Product name here</p>
+		<p class="desc">
+			Product description goes here, Lorem Ipsum is simply dummy text of the
+			printing and typesetting industry.
+		</p>
+		<div class="options clearfix">
+			<div class="size pull-left">
+				<div class="filterbox">
+					<h3>Size</h3>
+					<ul>
+						<li><input type="checkbox" id="s1"><label for="s1" class="box"><span>&nbsp;</span></label><label for="s1" class="text">X</label> <span class="pull-right">(10)</span></li>
+						<li><input type="checkbox" id="s2"><label for="s2" class="box"><span>&nbsp;</span></label><label for="s2" class="text">XL</label> <span class="pull-right">(15)</span></li>
+						<li><input type="checkbox" id="s3"><label for="s3" class="box"><span>&nbsp;</span></label><label for="s3" class="text">XXL</label> <span class="pull-right">(Not Available)</span></li>
+						<li><input type="checkbox" id="s4"><label for="s4" class="box"><span>&nbsp;</span></label><label for="s4" class="text">XXXL</label> <span class="pull-right">(3)</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="color pull-left">
+				<div class="filterbox">
+					<h3>Color</h3>
+					<ul>
+						<li><input type="checkbox" id="c1"><label for="c1" class="box"><span>&nbsp;</span></label><label for="c1" class="text"> <span class="colorop red">&nbsp;</span> Red</label></li>
+						<li><input type="checkbox" id="c2"><label for="c2" class="box"><span>&nbsp;</span></label><label for="c2" class="text"> <span class="colorop blue">&nbsp;</span> Blue</label></li>
+						<li><input type="checkbox" id="c3"><label for="c3" class="box"><span>&nbsp;</span></label><label for="c3" class="text"> <span class="colorop orange">&nbsp;</span> Orange</label></li>
+						<li><input type="checkbox" id="c4"><label for="c4" class="box"><span>&nbsp;</span></label><label for="c4" class="text"> <span class="colorop black">&nbsp;</span> Black</label></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="actions">
+			<div class="buttons clearfix pull-left">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 price"><div class="old-price">$65</div><div class="new-price">$30</div></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon"><a href="#"><i class="icon-heart"></i></a></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon"><a href="#"><i class="icon-refresh"></i></a></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 btnicon cart"><a href="#" class="themecolor"><i class="icon-shopping-cart"></i></a></div>
+			</div>
+
+			<div class="wrating pull-left">
+				<a href="#"><img src="images/fb-like-button.jpg" alt=""></a>
+				<div class="btnicon rating "> Rating (36) - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i></div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section class="content row prodinfobot">
+	<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+		<div class="clearfix">
+			<ul class="nav nav-tabs" id="myTab">
+				<li class="active"><a href="#desc">Description</a></li>
+				<li><a href="#rev">Reviews</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="desc">
+					<p class="caption14">Description</p>
+					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+				</div>
+				<div class="tab-pane" id="rev">
+					<!-- review -->
+					<div class="review clearfix">
+						<div class="wavatar pull-left mt30">
+							<div class="avatar"><i class="icon-user"></i></div>
+						</div>
+						<div class="reviewdetails pull-left mt30">
+							<div class="name"><span class="caption14">Aditya Shau - </span><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+							<div class="text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.</div>
+							<div class="likes"><i class="icon-thumbs-up-alt"></i> 52 <i class="icon-thumbs-down-alt ml15"></i> 3</div>
+						</div>
+					</div>
+					<div class="row dividermr dividerml">&nbsp;</div>
+					<!-- END review -->
+					<!-- review -->
+					<div class="review clearfix">
+						<div class="wavatar pull-left mt30">
+							<div class="avatar"><i class="icon-user"></i></div>
+						</div>
+						<div class="reviewdetails pull-left mt30">
+							<div class="name"><span class="caption14">Jhonny Blaze - </span><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i></div>
+							<div class="text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock.</div>
+							<div class="likes"><i class="icon-thumbs-up-alt"></i> 115 <i class="icon-thumbs-down-alt ml15"></i> 16</div>
+						</div>
+					</div>
+					<div class="row dividermr dividerml">&nbsp;</div>
+					<!-- END review -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ratings">
+		<h2>Ratings</h2>
+		<div class="mt30">
+			<div class="btnicon rating "> 5 Stars - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <span class="graystar">-</span> (36)</div>
+			<div class="btnicon rating "> 4 Stars - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i> <span class="graystar">-</span> (20)</div>
+			<div class="btnicon rating "> 3 Stars - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <span class="graystar">-</span> (2)</div>
+			<div class="btnicon rating "> 2 Stars - <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <span class="graystar">-</span> (11)</div>
+			<div class="btnicon rating "> 1 Stars - <i class="icon-star"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> <span class="graystar">-</span> (3)</div>
+		</div>
+
+		<h2 class="yourrating">Submit your rating</h2>
+		<div class="btnicon rating "><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star graystar"></i> <i class="icon-star graystar"></i> (Good)</div>
+	</div>
+</section>
+
+
+
+
+

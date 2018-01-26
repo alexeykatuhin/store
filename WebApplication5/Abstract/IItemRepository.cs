@@ -12,7 +12,7 @@ namespace WebApplication5.Abstract
 		void SaveItem(Item item);
 		Item DeleteItem(int Id);
 		IEnumerable<Image> Images { get; }
-		void SaveImg(int id, string url, string res = null);
+		void AddImg(int idItem, string url, bool isHead = false, int id = 0, string shortFileName = null);
 		IEnumerable<FullItem> FullItems { get; }
 
 	}

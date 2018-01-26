@@ -183,6 +183,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\ImageConvertor.cs" />
     <Compile Include="Concrete\EfGameRepository.cs" />
     <Compile Include="Concrete\EfImageRepository.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
@@ -258,6 +259,7 @@
       <DependentUpon>Item.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemBigViewModel.cs" />
+    <Compile Include="Models\ItemContext.cs" />
     <Compile Include="Models\ItemListViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -300,6 +302,9 @@
     </Content>
     <Content Include="Content\Images\dolya--61_270.jpg" />
     <Content Include="Content\Images\dolya--61_75.jpg" />
+    <Content Include="Content\Images\noImg.jpg" />
+    <Content Include="Content\Images\noImg271_171.jpg" />
+    <Content Include="Content\Images\noImg75_75.jpg" />
     <Content Include="Content\Images\slider\1.jpg" />
     <Content Include="Content\Images\slider\1_thumb.jpg" />
     <Content Include="Content\Images\slider\2.jpg" />
@@ -409,6 +414,8 @@
     <Content Include="Models\FullItem.edmx.diagram">
       <DependentUpon>FullItem.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\1.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -462,7 +469,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Admin\AddImage.cshtml" />
+    <Content Include="Views\Admin\Images.cshtml" />
+    <Content Include="Views\Admin\AddPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Game\" />

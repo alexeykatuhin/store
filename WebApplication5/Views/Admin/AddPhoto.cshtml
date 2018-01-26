@@ -1,0 +1,41 @@
+﻿@model WebApplication5.Models.Image
+@{
+    ViewBag.Title = "AddPhoto";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddPhoto</h2>
+
+<div class="form-group">
+		@using (Html.BeginForm("GetPhoto", "Admin",
+			FormMethod.Post, new {enctype = "multipart/form-data"}))
+		{
+			<div style="position: relative;">
+				<label>Картинка</label>
+
+				<a class='btn' href='javascript:;'>
+					Выберите файл...
+					<input type="file" name="Image" accept="image/png, image/jpeg" size="40"
+						   style="position: absolute; z-index: 2; top: 0; left: 0; filter: alpha(opacity=0); opacity: 0; background-color: transparent; color: transparent;"
+					       onchange='$("#upload-file-info").html($(this).val()); $("#submitPhoto").removeAttr("disabled");'>
+
+				</a>
+				<span class='label label-info' id="upload-file-info"></span>
+			</div>
+			@Html.Hidden("ItemId", Model.ItemId)
+			@Html.Hidden("Id", Model.Id)
+			@Html.Hidden("IsHead", Model.IsHead)
+			<input id="submitPhoto" type="submit" disabled="disabled" onclick="photo" value="Сохранить и обновить" class="btn btn-primary" />
+		}
+	
+			<img id="upload-file" class="img-thumbnail" width="150" height="150"
+				 src="@Model.ImgUrl"/>
+	
+	</div>
+
+	<script>
+		function photo(obj) {
+
+		}
+	</script>
+

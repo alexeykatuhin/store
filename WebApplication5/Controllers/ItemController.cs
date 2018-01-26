@@ -36,7 +36,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl_271_171
+					HeadImgUrl = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead)? _repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl_271_171 : "/Content/Images/NoImg271_171.jpg"
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
@@ -65,7 +65,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl_271_171
+					HeadImgUrl = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead) ? _repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl_271_171 : "/Content/Images/NoImg.jpg"
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
