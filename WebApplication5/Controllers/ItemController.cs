@@ -25,6 +25,8 @@ namespace WebApplication5.Controllers
 	
 		public ViewResult List(string category)
 		{
+			if (!_repo.Items.Any())
+				return View(new ItemListViewModel());
 			curPage = 1;
 			List<Item> listItems =_repo.Items
 					.Where(p => category == null || p.Category == category)
@@ -36,7 +38,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead)? _repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).ImgUrl_271_171 : "/Content/Images/NoImg271_171.jpg"
+					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead)? (int?)_repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).Id : null
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
@@ -65,7 +67,7 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgUrl = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead) ? _repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).ImgUrl_271_171 : "/Content/Images/NoImg.jpg"
+					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead) ? (int?)_repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).Id :null
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()

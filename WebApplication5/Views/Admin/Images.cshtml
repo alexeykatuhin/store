@@ -1,5 +1,5 @@
 ﻿@using WebApplication5.Models
-@model IEnumerable<WebApplication5.Models.Image>
+@model ImageViewModel
 
 
 @{
@@ -9,71 +9,80 @@
 
 <h2>Images</h2>
 
-<div class="panel-body">
-	<table class="table table-striped table-condensed table-bordered">
-		<tr>
-			<th class="text-center">Главное фото</th>
 
-			@if (Model.Count() > 1)
-			{
 
-				for (int i = 0; i < Model.Count() - 1; i++)
+
+@if (Model.Images.Count() != 0)
+{
+	<div class="panel-body">
+		<table class="table table-striped table-condensed table-bordered">
+			<tr>
+				<th class="text-center">Главное фото</th>
+
+				@if (Model.Images.Count() > 1)
 				{
-					<th class="text-center">Доп. фото</th>
-				}
 
-			}
-		</tr>
-		
-		<tr>
-			<td>
-				<img src="@Model.First(x=>x.IsHead).ImgUrl_75_75"/>
-			</td>
-			@if (Model.Count() > 1)
-			{
-				IEnumerable<Image> templst = Model.Where(x => !x.IsHead);
-				foreach (Image image in templst)
-				{
-					<th>
-						<img src="@image.ImgUrl_75_75"/>
-					</th>
-				}
-			}
-		</tr>
-		<tr>
-			@foreach (Image img in Model)
-			{
-				if (img.IsHead)
-				 {
-					 <th>
-						 <a class="btn btn-primary" href="#">Редактировать</a>
-					 </th>
-				}
-				else
-				{
-					<th>
-						<ul>
-							<li>
-								<a class="btn btn-primary" href="#">Редактировать</a>
-							</li>
-							<li>
-								<a class="btn btn-primary" href="#">Сделать главным</a>
-							</li>
-							<li>
-								<a class="btn btn-primary" href="#">Удалить</a>
-							</li>
+					for (int i = 0; i < Model.Images.Count() - 1; i++)
+					{
+						<th class="text-center">Доп. фото</th>
+					}
 
-						</ul>
+				}
+			</tr>
+
+			<tr>
+				<td>
+					<img src="@Url.Action("GetImage75", "Image", new {Id = Model.Images.First(x => x.IsHead).Id})"/>
+				</td>
+				@if (Model.Images.Count() > 1)
+				{
+					IEnumerable<Image> templst = Model.Images.Where(x => !x.IsHead);
+					foreach (Image image in templst)
+					{
+						<th>
+							<img src="@Url.Action("GetImage75", "Image", new {Id = image.Id})"/>
 						</th>
+					}
 				}
-			}
-		</tr>
+			</tr>
+			<tr>
+				<th>
+					<a class="btn btn-primary" href="@Url.Action("AddPhoto", new {ItemId = Model.Images.First(x=>x.IsHead).ItemId, Id = Model.Images.First(x => x.IsHead).Id})">Редактировать</a>
+				</th>
+
+				@foreach (Image img in Model.Images)
+				{
+					if (!img.IsHead)
+					{
+						<th>
+							<ul>
+								<li>
+									<a class="btn btn-primary" href="@Url.Action("AddPhoto", new {ItemId = img.ItemId, Id = img.Id})">Редактировать</a>
+								</li>
+								<li>
+									<a class="btn btn-primary" href="@Url.Action("SetHead", new {Id = img.Id, ItemId = img.ItemId})">Сделать главным</a>
+								</li>
+								<li>
+									<a class="btn btn-primary" href="@Url.Action("DeleteImage", new {Id = img.Id})">Удалить</a>
+								</li>
+
+							</ul>
+						</th>
+					}
+			
+				}
+			</tr>
 
 
-	</table>
-	
-	<a class="btn btn-primary" href="@Url.Action("AddPhoto", "Admin", new { ItemId = Model.ToList()[0].ItemId})">Добавить фото</a>
-</div>
+		</table>
+		<a class="btn btn-primary" href="@Url.Action("AddPhoto", "Admin", new {ItemId = Model.Id})">Добавить фото</a>
+	</div>
+}
+else
+{
+	<p>Нет фото</p>
+	<a class="btn btn-primary" href="@Url.Action("AddPhoto", "Admin", new {ItemId = Model.Id})">Добавить фото</a>
+}
 
 
 

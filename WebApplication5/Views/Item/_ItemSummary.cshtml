@@ -4,7 +4,7 @@
 	<div class="item">
 		<div class="item-details clearfix">
 			<a href="@Url.Action("ItemBig", new {id = Model.Item.Id})">
-				<img src="@Model.HeadImgUrl" alt width="100%" />
+				<img src="@Url.Action("GetImage271", "Image" , new {Id = Model.HeadImgId})" alt width="100%" />
 			</a>
 			</div>
 			<div class="item-details clearfix">

@@ -9,7 +9,7 @@ namespace WebApplication5.Models
 	{
 		private List<CartLine> lineCollection = new List<CartLine>();
 
-		public void AddItem(Item item, int quantity, string url271, string url)
+		public void AddItem(Item item, int quantity, int? ImageId)
 		{
 			CartLine line = lineCollection
 				.Where(g => g.Item.Id == item.Id)
@@ -21,8 +21,7 @@ namespace WebApplication5.Models
 				{
 					Item = item,
 					Quantity = quantity,
-					ImageUrl = url,
-					ImgUrl_271_171 = url271
+					ImageId = ImageId
 				});
 			}
 			else
@@ -55,7 +54,6 @@ namespace WebApplication5.Models
 	{
 		public Item Item { get; set; }
 		public int Quantity { get; set; }
-		public string ImageUrl { get; set; }
-		public string ImgUrl_271_171 { get; set; }
+		public int? ImageId { get; set; }
 	}
 }

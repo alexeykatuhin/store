@@ -8,6 +8,6 @@ namespace WebApplication5.Models
 	public class ItemViewModel
 	{
 		public Item Item { get; set; }
-		public string HeadImgUrl { get; set; }
+		public int? HeadImgId { get; set; }
 	}
 }

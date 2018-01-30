@@ -33,7 +33,8 @@ namespace WebApplication5.Controllers
 
 			if (game != null)
 			{
-				cart.AddItem(game, 1, _repo.Images.First(x=>x.ItemId == Id && x.IsHead).ImgUrl_271_171, _repo.Images.First(x => x.ItemId == Id && x.IsHead).ImgUrl_75_75);
+				cart.AddItem(game, 1,
+					_repo.Images.Any(x => x.ItemId == Id) ? (int?) _repo.Images.First(x => x.ItemId == Id && x.IsHead).Id : null);
 			}
 			var script = @"var prev =parseInt($('#cartSpan').html());
 if (prev == 0){

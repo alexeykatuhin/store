@@ -25,6 +25,7 @@ namespace WebApplication5.Controllers
 	    {
 		    List<ItemBigViewModel> viewModel = new List<ItemBigViewModel>();
 		    List <Item> lstItm= _repo.Items.ToList();
+			if (lstItm.Any())
 		    foreach (Item item in lstItm)
 		    {
 			    viewModel.Add(new ItemBigViewModel()
@@ -49,8 +50,7 @@ namespace WebApplication5.Controllers
 			if (ModelState.IsValid)
 			{
 				_repo.SaveItem(game);
-				if (!_repo.Images.Any(x=>x.Id == game.Id))
-					_repo.AddImg(game.Id, "/Content/Images/NoImg.jpg", true);
+
 				TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", game.Name);
 				return RedirectToAction("Edit", game);
 			}
@@ -78,42 +78,75 @@ namespace WebApplication5.Controllers
 	    public ActionResult Images(int Id)
 	    {
 		    IEnumerable<Image> img = _repo.Images.Where(x => x.ItemId == Id);
-		    return View(img);
+
+		    return View(new ImageViewModel() {Images = img, Id = Id});
 	    }
 
 	    public ActionResult AddPhoto(int ItemId, int Id=0)
 	    {
-		    Image img = Id == 0 ? new Image() {Id=0, ItemId = ItemId, ImgUrl = "/Content/Images/NoImg.jpg", ImgUrl_271_171 = "/Content/Images/NoImg271_171.jpg", ImgUrl_75_75 = "/Content/Images/NoImg75_75.jpg", IsHead = false} : _repo.Images.FirstOrDefault(x => x.Id == Id); 
+		    bool _isHead = !_repo.Images.Any(x => x.ItemId == ItemId && x.IsHead);
+		    Image img = Id == 0 ? new Image() {Id=0, ItemId = ItemId, IsHead = _isHead} : _repo.Images.FirstOrDefault(x => x.Id == Id); 
 		    return View(img);
 	    }
 
-
+		[HttpPost]
 		public ActionResult GetPhoto(int ItemId, int Id, bool IsHead, HttpPostedFileBase Image)
 		{
-			if (Id != 0)
+			//if (Id != 0)
+			//{
+			//	Models.Image img = _repo.Images.First(x => x.Id == Id);
+	
+
+			//}
+			
+			Image img = new Image()
 			{
-				Models.Image img = _repo.Images.First(x => x.Id == Id);
-				System.IO.File.Delete(img.ImgUrl);
-				System.IO.File.Delete(img.ImgUrl_271_171);
-				System.IO.File.Delete(img.ImgUrl_75_75);
+				Id = Id,
+				ItemId = ItemId,
+				IsHead = IsHead,
+				ImageMimeType = Image.ContentType,
+				ImageData = new byte[Image.ContentLength]
+			};
+			Image.InputStream.Read(img.ImageData, 0, Image.ContentLength);
 
-			}
+			
 
-			string fileName = System.IO.File.Exists("~/Content/Images/" + Image.FileName)
-			? ItemId.ToString() + "_" + Id.ToString() + Image.FileName
-			: Image.FileName;
-
-		
-			Image.SaveAs(Server.MapPath("~/Content/Images/" + fileName));
-
-			_repo.AddImg(ItemId, "/Content/Images/" + fileName,IsHead,Id, fileName);
+			_repo.AddImg(img);
 
 			Models.Image newImg = Id == 0 ? _repo.Images.Last() : _repo.Images.First(x => x.Id == Id);
 
 
 
-
+			TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", _repo.Items.First(x=>x.Id == ItemId).Name);
 			return View("AddPhoto", newImg);
+		}
+
+	
+	    public ActionResult SetHead(int Id, int ItemId)
+	    {
+		    Image former = _repo.Images.First(x => x.ItemId == ItemId && x.IsHead);
+		    former.IsHead = false;
+		    Image newer = _repo.Images.First(x => x.Id == Id);
+		    newer.IsHead = true;
+			_repo.AddImg(former);
+			_repo.AddImg(newer);
+		    return RedirectToAction("Images", new ImageViewModel()
+		    {
+			    Id = ItemId,
+			    Images = _repo.Images.Where(x => x.Id == ItemId)
+		    });
+	    }
+
+	    public ActionResult DeleteImage(int Id)
+	    {
+		    Image img = _repo.Images.First(x => x.Id == Id);
+		    int ItemId = img.ItemId;
+			_repo.DeleteImage(Id);
+			return RedirectToAction("Images", new ImageViewModel()
+			{
+				Id = ItemId,
+				Images = _repo.Images.Where(x => x.Id == ItemId)
+			});
 		}
 	}
 }

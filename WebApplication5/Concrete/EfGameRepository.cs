@@ -51,45 +51,29 @@ namespace WebApplication5.Concrete
 		}
 		public IEnumerable<Image> Images => _cntx.Image;
 
-		public void AddImg(int idItem,string url, bool isHead=false, int id = 0, string shortFileName = null)
+		public void AddImg(Image img)
 		{
-			Image img;
-
-			img = new Image() {IsHead = isHead, ItemId = idItem};
-			if (url == "/Content/Images/NoImg.jpg")
+			if (img.Id == 0 || !_cntx.Image.Any(x => x.Id == img.Id))
 			{
-				img.ImgUrl = url;
-				img.ImgUrl_271_171 = "/Content/Images/NoImg271_171.jpg";
-				img.ImgUrl_75_75 = "/Content/Images/NoImg75_75.jpg";
-			}
-			else
-				ImageConvertor.SetImages(ref img, url);
-
-			if (id == 0)
 				_cntx.Image.Add(img);
+			}
 			else
 			{
-				Image img1 =_cntx.Image.Find(id);
-				img1.ImgUrl = img.ImgUrl;
-				img1.ImgUrl_271_171 = img.ImgUrl_271_171;
-				img1.ImgUrl_75_75 = img.ImgUrl_75_75;
-				img1.IsHead = img.IsHead;
-				img1.ItemId = img.ItemId;
+				Image image = _cntx.Image.Find(img.Id);
+				image.ImageData = img.ImageData;
+				image.ImageMimeType = img.ImageMimeType;
+				image.IsHead = img.IsHead;
+				image.ItemId = img.ItemId;
 			}
-
-
 			_cntx.SaveChanges();
-
-
-
-
-
-
-
-
-			
 		}
 
+		public void DeleteImage(int Id)
+		{
+			Image Img = _cntx.Image.Find(Id);
+			_cntx.Image.Remove(Img);
+			_cntx.SaveChanges();
+		}
 		public IEnumerable<FullItem> FullItems => _cntx.FullItem;
 	}
 }

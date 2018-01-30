@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,63 +202,12 @@
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
-    <Compile Include="Models\FullItem.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FullItem.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FullItem.cs">
-      <DependentUpon>FullItem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FullItem.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FullItem.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FullItem1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FullItem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Image.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Image.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Image.cs">
-      <DependentUpon>Image.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Image.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Image.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Image1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Image.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Item.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Item.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Item.cs">
-      <DependentUpon>Item.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Item.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Item.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Item1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Item.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\FullItem.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemBigViewModel.cs" />
     <Compile Include="Models\ItemContext.cs" />
     <Compile Include="Models\ItemListViewModel.cs" />
@@ -354,66 +304,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\FullItem.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FullItem.edmx</DependentUpon>
-      <LastGenOutput>FullItem.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\FullItem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FullItem.edmx</DependentUpon>
-      <LastGenOutput>FullItem1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Image.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Image.edmx</DependentUpon>
-      <LastGenOutput>Image.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Image.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Image.edmx</DependentUpon>
-      <LastGenOutput>Image1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Item.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Item.edmx</DependentUpon>
-      <LastGenOutput>Item.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Item.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Item.edmx</DependentUpon>
-      <LastGenOutput>Item1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Item.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Item.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Item.edmx.diagram">
-      <DependentUpon>Item.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontd41d.eot" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.eot" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.ttf" />
     <Content Include="Content\css\font\font-awesome\font\fontawesome-webfontf77b.woff" />
-    <EntityDeploy Include="Models\Image.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Image.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Image.edmx.diagram">
-      <DependentUpon>Image.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\FullItem.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FullItem.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FullItem.edmx.diagram">
-      <DependentUpon>FullItem.edmx</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -473,7 +372,7 @@
     <Content Include="Views\Admin\AddPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Game\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -29,10 +29,10 @@
 		}
 	
 			<img id="upload-file" class="img-thumbnail" width="150" height="150"
-				 src="@Model.ImgUrl"/>
+				 src="@Url.Action("GetImage", "Image", new {Id = Model.Id})"/>
 	
 	</div>
-
+<a href="@Url.Action("Images", new {Id = Model.ItemId})">Вернуться назад</a>
 	<script>
 		function photo(obj) {
 

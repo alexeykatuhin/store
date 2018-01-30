@@ -4,43 +4,44 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Razor.Text;
 
 namespace WebApplication5.Classes
 {
 	public static class ImageConvertor
 	{
-		public static void SetImages(ref Models.Image img, string url)
-		{
-			img.ImgUrl = url;
-			bool dsfs = File.Exists(Directory.GetCurrentDirectory()+"//Content//Images//"+url);
+		//public static void SetImages(ref Models.Image img, string url)
+		//{
+		//	img.ImgUrl = url;
+		//	bool dsfs = File.Exists(Directory.GetCurrentDirectory()+"//Content//Images//"+url);
 
-			Image source = Image.FromFile(url);
+		//	Image source = Image.FromFile(url);
 
-			Image img271 = ScaleImage(source, 271, 171);
+		//	Image img271 = ScaleImage(source, 271, 171);
 
-			Image img75 = ScaleImage(source, 75, 75);
+		//	Image img75 = ScaleImage(source, 75, 75);
+		//	img75.Save();
 
+		//	int index = 0;
+		//	for (int i = url.ToCharArray().Length-1; i >0; i--)
+		//	{
+		//		if (url[i] == '.')
+		//			index = i;
+		//	}
 
-			int index = 0;
-			for (int i = url.ToCharArray().Length-1; i >0; i--)
-			{
-				if (url[i] == '.')
-					index = i;
-			}
+		//	string url271 = url.Insert(index, "271_171");
+		//	string url75 = url.Insert(index, "75_75");
 
-			string url271 = url.Insert(index, "271_171");
-			string url75 = url.Insert(index, "75_75");
+		//	img271.Save(url271);
+		//	img75.Save(url75);
 
-			img271.Save(url271);
-			img75.Save(url75);
+		//	img.ImgUrl_271_171 = url271;
+		//	img.ImgUrl_75_75 = url75;
 
-			img.ImgUrl_271_171 = url271;
-			img.ImgUrl_75_75 = url75;
-
-		}
-		static Image ScaleImage(Image source, int width, int height)
-		{
-
+		//}
+		public static	byte[]  ScaleImage(byte[] source1, int width, int height)
+	{
+		Image source = (Image) ((new ImageConverter()).ConvertFrom(source1));
 			Image dest = new Bitmap(width, height);
 			using (Graphics gr = Graphics.FromImage(dest))
 			{
@@ -74,9 +75,10 @@ namespace WebApplication5.Classes
 				}
 
 
+				ImageConverter _imageConverter = new ImageConverter();
+				byte[] xByte = (byte[])_imageConverter.ConvertTo(dest, typeof(byte[]));
 
-
-				return dest;
+				return xByte;
 			}
 		}
 	}
