@@ -11,6 +11,14 @@
 
 
 				<p class="name">@($"\n{Model.Item.Name}\n")</p>
+				@if (Model.ColorQuantity != 1&&Model.ColorQuantity!=0 )
+				{
+					<p class="quantity">@Model.ColorQuantity Цвета</p>
+				}
+				else
+				{
+					<p><br/></p>
+				}
 				<p class="desc">@($"\n{Model.Item.Description}\n")</p>
 				<div class="buttons">
 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price">

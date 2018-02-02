@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WebApplication5.Models
 {
 	using System;
@@ -18,6 +20,7 @@ namespace WebApplication5.Models
 		public int ItemId { get; set; }
 		public string Size { get; set; }
 		public string Color { get; set; }
+		[Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для количества")]
 		public int Quantity { get; set; }
 	}
 }

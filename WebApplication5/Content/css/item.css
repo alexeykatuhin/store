@@ -550,7 +550,14 @@ h2 {
 .featured .item-details .desc{
     font-size: 13px;
 
+
 }
+
+.featured .item-details .quantity{
+    font-size: 13px;
+	opacity: .5;
+}
+
 
 .featured .item-details .btnicon{
     line-height: 59px;
@@ -1386,12 +1393,19 @@ footer .divider{
 }
 
 .productinfo .size {
-    width: 58%;
-    border-right: 1px solid #e1e1e1;
+    width: 100%;
+	    border-right: none;
 }
 
+.productinfo .sizeWithoutColor {
+    width:100%;
+}
+
+
+
 .productinfo .color  {
-    width: 42%;
+    width: 100%;
+	border-top: 1px solid #e1e1e1;
 }
 
 .productinfo .size .filterbox {
@@ -1687,6 +1701,16 @@ table.cart {
     margin-bottom: 8px;
 }
 
+.qty1 {
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    width: 150px;
+    height: 42px;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
 .cartqty a {
     font-size: 12px;
 }
@@ -2609,5 +2633,16 @@ table.checkout .card input[type=submit] {
     .newsitem.activenews, .newsitem:hover {
         margin-right: 0;
     }
-	
+
 }
+	.anotherColorItem {
+		    border: 1px solid #e1e1e1;
+			padding-left: 1px;
+			width: 54px;
+		margin-right: 10px;
+		margin-bottom: 5px;
+	}
+	#inp {
+		border: white;
+		background-color: white;
+	}

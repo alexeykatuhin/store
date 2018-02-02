@@ -11,5 +11,6 @@ namespace WebApplication5.Models
 		public DbSet<Item> Item { get; set; }
 		public DbSet<FullItem> FullItem { get; set; }
 		public DbSet<Image> Image { get; set; }
+		public DbSet<Group> Group { get; set; }
 	}
 }

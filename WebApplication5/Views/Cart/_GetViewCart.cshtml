@@ -17,7 +17,7 @@
 				<div class="desc">Количество: @cart.Quantity</div>
 				<div class="price">₽@cart.Item.Price</div>
 			</div>
-			<div class="looclose pull-left"><a data-ajax="true" data-ajax-update="#cartView" data-ajax-success="RefreshCart" href="@Url.Action("RemoveFromCart", new { Id = cart.Item.Id})"><i class="icon-remove"></i></a></div>
+			<div class="looclose pull-left"><a data-ajax="true" data-ajax-update="#cartView" data-ajax-success="RefreshCart" href="@Url.Action("RemoveFromCart", new { Id = cart.Item.Id, size = cart.Size})"><i class="icon-remove"></i></a></div>
 		</div>
 	}
 	<div class="row mcartbot">

@@ -205,6 +205,8 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\FullItem.cs" />
+    <Compile Include="Models\FullItemViewModel.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\Item.cs" />
@@ -370,6 +372,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Admin\Images.cshtml" />
     <Content Include="Views\Admin\AddPhoto.cshtml" />
+    <Content Include="Views\Admin\FullItems.cshtml" />
+    <Content Include="Views\Admin\EditFullItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Image\" />

@@ -38,7 +38,8 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead)? (int?)_repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).Id : null
+					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead)? (int?)_repo.Images.First(x=>x.ItemId==listItems[i].Id && x.IsHead).Id : null,
+					ColorQuantity = _repo.Groups.Count(x=>x.GroupId == listItems[i].Id)
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
@@ -67,7 +68,8 @@ namespace WebApplication5.Controllers
 				listView.Add(new ItemViewModel()
 				{
 					Item = listItems[i],
-					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead) ? (int?)_repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).Id :null
+					HeadImgId = _repo.Images.Any(x => x.ItemId == listItems[i].Id && x.IsHead) ? (int?)_repo.Images.First(x => x.ItemId == listItems[i].Id && x.IsHead).Id :null,
+					ColorQuantity = _repo.Groups.Count(x => x.GroupId == listItems[i].Id)
 				});
 			}
 			ItemListViewModel model = new ItemListViewModel()
@@ -86,7 +88,23 @@ namespace WebApplication5.Controllers
 				FullItems = _repo.FullItems.Where(x=>x.ItemId == id).ToList(),
 				Item = item,
 				Images = _repo.Images.Where(x=>x.ItemId == id).ToList()
+
 		    };
+			List<ItemViewModel> otherColors = new List<ItemViewModel>();
+		    int groupId = _repo.Groups.First(y => y.ItemId == id).GroupId;
+		    if (_repo.Groups.Count(x => x.GroupId == groupId) > 1)
+		    {
+			    List<Group> lstGroups = _repo.Groups.Where(x => x.GroupId == groupId && x.ItemId != id).ToList();
+			    foreach (Group group in lstGroups)
+			    {
+				    otherColors.Add(new ItemViewModel()
+				    {
+					    Item = _repo.Items.First(x=>x.Id == group.ItemId),
+						HeadImgId = _repo.Images.Any(x => x.ItemId == group.ItemId && x.IsHead)? _repo.Images.First(x=>x.ItemId == group.ItemId && x.IsHead).Id:1
+				    });
+			    }
+		    }
+		    model.OtherColors = otherColors;
 		    return View(model);
 	    }
 

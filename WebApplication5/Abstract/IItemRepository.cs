@@ -16,5 +16,7 @@ namespace WebApplication5.Abstract
 		void DeleteImage(int Id);
 		IEnumerable<FullItem> FullItems { get; }
 
+		IEnumerable<Group> Groups { get; }
+
 	}
 }

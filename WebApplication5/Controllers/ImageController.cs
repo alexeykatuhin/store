@@ -64,5 +64,21 @@ namespace WebApplication5.Controllers
 				return File(ImageConvertor.ScaleImage(img1.ImageData, 75, 75), img1.ImageMimeType);
 			}
 		}
+		public FileContentResult GetImage50(int? Id)
+		{
+			Image img = _repo.Images
+				.FirstOrDefault(g => g.Id == Id);
+
+			if (img != null)
+			{
+
+				return File(ImageConvertor.ScaleImage(img.ImageData, 50, 50), img.ImageMimeType);
+			}
+			else
+			{
+				Image img1 = _repo.Images.First(x => x.Id == 1);
+				return File(ImageConvertor.ScaleImage(img1.ImageData, 75, 50), img1.ImageMimeType);
+			}
+		}
 	}
 }

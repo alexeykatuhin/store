@@ -9,5 +9,7 @@ namespace WebApplication5.Models
 	{
 		public Item Item { get; set; }
 		public int? HeadImgId { get; set; }
+		public int ColorQuantity { get; set; }
+		public string Size { get; set; }
 	}
 }

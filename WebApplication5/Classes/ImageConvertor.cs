@@ -81,5 +81,6 @@ namespace WebApplication5.Classes
 				return xByte;
 			}
 		}
+
 	}
 }

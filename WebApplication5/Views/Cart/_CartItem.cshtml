@@ -8,11 +8,12 @@
 <tr>
 	<td class="cartprodinfo">
 		<div class="img pull-left">
-			<img src="@Url.Action("GetImage271", "Image", new {Id = @Model.ImageId})" alt="" width="100%">
-		</div>
+				<img src="@Url.Action("GetImage271", "Image", new {Id = @Model.ImageId})" alt="" width="100%">
+		
+				</div>
 
 		<div class="info pull-left">
-			<p class="caption14">@Model.Item.Description</p>
+			<a href="@Url.Action("ItemBig","Item", new {id = Model.Item.Id})" class="caption14">@Model.Item.Name</a>
 			<p class="desc">
 				@Model.Item.Description
 			</p>
@@ -20,20 +21,48 @@
 	</td>
 	<td class="cartsize">
 		<p class="caption14">Размер</p>
-		<p>XL</p>
-	</td>
-	<td class="cartcolor">
+	
+		@if (Model.SizeList != null && Model.SizeList.Any() && Model.SizeList.Count > 1)
+		{
+			using (Html.BeginForm("Cart", "Cart", FormMethod.Post))
+			{
+				<input type="hidden" value="@Model.Item.Id" name="Id" />
+				<input name="newQuantity" type="text" class="qty" value="@Model.Quantity">
+				<select class="qty1" name="size">
+					<option value="@Model.Size">@Model.Size</option>
+					@foreach (string size in Model.SizeList)
+					{
+						if (size != Model.Size)
+						{
+							<option value="@size">@size</option>
+						}
+					}
+
+				</select>
+				<input id="inp" type="submit" value="Update" />
+			}
+
+			@*<a id="sizeA" href="#">Update</a>*@
+		}
+		else
+		{
+			<p>@Model.Size</p>
+		}
+		</td>
+	@*<td class="cartcolor">
 		<p class="caption14">Цвет</p>
 		<p><span class="colorop red">&nbsp;</span> Red</p>
-	</td>
+	</td>*@
 	<td class="cartqty">
 		<p class="caption14">Количество</p>
 		@using (Html.BeginForm("Cart", "Cart", FormMethod.Post))
 		{
 			<input type="hidden" value="@Model.Item.Id" name="Id" />
+			<input type="hidden" value="@Model.Size" name="size" />
 			<input name="newQuantity"  type="text" class="qty" value="@Model.Quantity">
 			<br>
-			<input type="submit" value="Update"/>
+
+			<input id="inp"  type="submit" value="Update"/>
 
 		}
 	</td>
@@ -44,7 +73,7 @@
 			<div class="col-xs-3 col-sm-6 col-md-3 col-lg-3 btnicon refresh"><a href="#"><i class="icon-refresh"></i></a></div>*@
 			<div class="col-xs-3 col-sm-12 col-md-3 col-lg-3 btnicon cart">
 				@*<a data-ajax="true" data-ajax-update="#cart" href="@Url.Action("RemoveFromBigCart", new {Id = @Model.Item.Id})"><i class="icon-remove"></i></a>*@
-				<a href="@Url.Action("RemoveFromBigCart", new {Id = @Model.Item.Id})"><i class="icon-remove"></i></a>
+				<a href="@Url.Action("RemoveFromBigCart", new {Id = @Model.Item.Id, size = Model.Size})"><i class="icon-remove"></i></a>
 			</div>
 		</div>
 
@@ -70,4 +99,23 @@
 		});
 		});*@
 	});
+
+	$(function() {
+		$('#sizeA').click(function() {
+			@*var inp = document.getElementsByName('size');
+			var size = inp[0].value;
+			alert(size);
+			$.ajax({
+				type: 'POST',
+				url: @Url.Action("Cart", "Cart"),
+				data: {
+					Id: @Model.Item.Id
+				}
+			});*@
+
+
+		});
+
+	});
+
 </script>

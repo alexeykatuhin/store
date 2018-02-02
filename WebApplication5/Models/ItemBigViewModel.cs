@@ -10,5 +10,6 @@ namespace WebApplication5.Models
 		public Item Item { get; set; }
 		public List<FullItem> FullItems  { get; set; }
 		public List<Image> Images { get; set; }
+		public List<ItemViewModel> OtherColors { get; set; }
 	}
 }

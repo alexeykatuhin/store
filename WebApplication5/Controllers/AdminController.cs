@@ -92,13 +92,7 @@ namespace WebApplication5.Controllers
 		[HttpPost]
 		public ActionResult GetPhoto(int ItemId, int Id, bool IsHead, HttpPostedFileBase Image)
 		{
-			//if (Id != 0)
-			//{
-			//	Models.Image img = _repo.Images.First(x => x.Id == Id);
-	
-
-			//}
-			
+		
 			Image img = new Image()
 			{
 				Id = Id,
@@ -109,13 +103,9 @@ namespace WebApplication5.Controllers
 			};
 			Image.InputStream.Read(img.ImageData, 0, Image.ContentLength);
 
-			
-
 			_repo.AddImg(img);
 
 			Models.Image newImg = Id == 0 ? _repo.Images.Last() : _repo.Images.First(x => x.Id == Id);
-
-
 
 			TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", _repo.Items.First(x=>x.Id == ItemId).Name);
 			return View("AddPhoto", newImg);
@@ -147,6 +137,34 @@ namespace WebApplication5.Controllers
 				Id = ItemId,
 				Images = _repo.Images.Where(x => x.Id == ItemId)
 			});
+		}
+		public ActionResult FullItems(int Id)
+		{
+			IEnumerable<FullItem> fullItems = _repo.FullItems.Where(x => x.ItemId == Id);
+
+			return View(new FullItemViewModel() { FullItems = fullItems, Id = Id });
+		}
+		public ViewResult EditFullItem(int Id)
+		{
+			FullItem item = _repo.FullItems.FirstOrDefault(x => x.Id == Id);
+			return View(item);
+		}
+		[HttpPost]
+		public void EditFullItem(FullItem game)
+		{
+			//if (ModelState.IsValid)
+			//{
+			//	_repo.SaveItem(game);
+
+			//	TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", game.Name);
+			//	return RedirectToAction("Edit", game);
+			//}
+			//else
+			//{
+			//	// Что-то не так со значениями данных
+			//	return View(game);
+			//}
+
 		}
 	}
 }

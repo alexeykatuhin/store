@@ -1,0 +1,58 @@
+﻿@model WebApplication5.Models.FullItemViewModel
+
+@{
+    ViewBag.Title = "FullItems";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>FullItems</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+			ItemId
+        </th>
+        <th>
+			Size
+        </th>
+        <th>
+			Color
+        </th>
+        <th>
+			Quantity
+        </th>
+        <th></th>
+    </tr>
+	@{
+		var lst = Model.FullItems;
+		if (lst.Any())
+		{
+
+			foreach (var item in lst)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ItemId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Size)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Color)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Quantity)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "EditFullItem", new {id = item.Id}) |
+						@Html.ActionLink("Delete", "Delete", new {id = item.Id})
+					</td>
+				</tr>
+			}
+		}
+
+	}
+</table>

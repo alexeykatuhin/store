@@ -75,5 +75,6 @@ namespace WebApplication5.Concrete
 			_cntx.SaveChanges();
 		}
 		public IEnumerable<FullItem> FullItems => _cntx.FullItem;
+		public IEnumerable<Group> Groups => _cntx.Group;
 	}
 }
