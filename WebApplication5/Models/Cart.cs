@@ -11,6 +11,8 @@ namespace WebApplication5.Models
 
 		public void AddItem(Item item, int quantity, int? ImageId, string size, List<string> sizeList)
 		{
+			if (size == null)
+				size = sizeList.FirstOrDefault();
 			CartLine line = lineCollection
 				.Where(g => g.Item.Id == item.Id && g.Size == size)
 				.FirstOrDefault();

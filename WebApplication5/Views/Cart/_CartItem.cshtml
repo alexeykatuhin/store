@@ -27,7 +27,7 @@
 			using (Html.BeginForm("Cart", "Cart", FormMethod.Post))
 			{
 				<input type="hidden" value="@Model.Item.Id" name="Id" />
-				<input name="newQuantity" type="text" class="qty" value="@Model.Quantity">
+				<input type="hidden" value="@Model.Size" name="oldSize" />
 				<select class="qty1" name="size">
 					<option value="@Model.Size">@Model.Size</option>
 					@foreach (string size in Model.SizeList)
@@ -68,7 +68,7 @@
 	</td>
 	<td class="cartbuttons">
 		<div class="buttons clearfix">
-			<div class="col-xs-9 col-sm-12 col-md-9 col-lg-9 price"><div class="old-price">₽@(Model.Item.Price * 1.4)</div><div class="new-price">₽@(Model.Item.Price)</div></div>
+			<div class="col-xs-9 col-sm-12 col-md-9 col-lg-9 price"><div class="old-price">₽@(Model.Item.Price * 1.4)</div><div class="new-price">₽@(Model.Item.Price*Model.Quantity)</div></div>
 			@*<div class="col-xs-3 col-sm-6 col-md-3 col-lg-3 btnicon like"><a href="#"><i class="icon-heart"></i></a></div>
 			<div class="col-xs-3 col-sm-6 col-md-3 col-lg-3 btnicon refresh"><a href="#"><i class="icon-refresh"></i></a></div>*@
 			<div class="col-xs-3 col-sm-12 col-md-3 col-lg-3 btnicon cart">

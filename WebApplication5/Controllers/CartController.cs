@@ -102,13 +102,45 @@ $('#cartSpan').css('display', 'block');
 
 
 
-		public ActionResult Cart(Cart cart, int Id=0, int newQuantity=0, string size=null)
+		public ActionResult Cart(Cart cart, int Id=0, int newQuantity=0, string size = null, string oldSize = null)
 		{
 
 			if (Id != 0)
 			{
-				/////////////дддддддддддддддддддддуууууууууууматьььььььььь
-				cart.Lines.First(x => x.Item.Id == Id).Quantity = newQuantity;
+				//нажали на упдате количества
+				if (oldSize == null)
+				{
+					//защита от дурака
+					if (newQuantity == 0)
+						TempData["message"] = string.Format("Введите корректное значение");
+					else
+					{
+						//проверка на наличие
+						int cnt = _repo.FullItems.First(x => x.ItemId == Id && x.Size == size).Quantity;
+						if (cnt >= newQuantity)
+							cart.Lines.First(x => x.Item.Id == Id && x.Size == size).Quantity = newQuantity;
+						else
+							TempData["message"] = string.Format(
+								"Нет в наличии данного количества товаров. Вы можете заказать до {0} товаров", cnt);
+					}
+				}
+				//нажали на упдате размера
+				else
+				{
+					//поменили чо то
+					if (size != oldSize)
+					{
+						//уже есть такой размер
+						if (cart.Lines.Any(x=>x.Item.Id == Id && x.Size == size))
+							TempData["message"] = string.Format("Данный размер уже есть в корзине");
+						else
+						{
+							cart.Lines.First(x => x.Item.Id == Id && x.Size == oldSize).Size = size;
+						}
+					}
+				}
+
+
 			}
 			if (cart.Lines == null || cart.Lines.Count() == 0)
 				return View("_EmptyCart");
