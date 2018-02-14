@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication5.Abstract;
+using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
@@ -20,11 +21,21 @@ namespace WebApplication5.Controllers
 	    public PartialViewResult Menu(string category=null)
 	    {
 		    ViewBag.SelectedCategory = category;
-		    IEnumerable<string> categories = _repo.Items
+			List<NavViewModel> res = new List<NavViewModel>();
+			IEnumerable<string> categories = _repo.Items
 						 .Select(game => game.Category)
 				.Distinct()
 				.OrderBy(x => x);
-			return PartialView(categories);
+			if (categories.Any())
+		    foreach (string s in categories)
+		    {
+			    res.Add(new NavViewModel()
+			    {
+				    Name = s,
+					Count = _repo.Items.Count(x=>x.Category == s)
+			    });
+		    }
+			return PartialView(res);
 		}
     }
 }

@@ -108,11 +108,11 @@ namespace WebApplication5.Controllers
 		    return View(model);
 	    }
 
-	    public ActionResult GetColors(int Id, string size)
-	    {
-		    List<string> list = _repo.FullItems.Where(x => x.ItemId == Id && x.Size == size).Select(x => x.Color).Distinct().ToList();
-		    return PartialView("_GetColors", list);
-	    }
+	    //public ActionResult GetColors(int Id, string size)
+	    //{
+		   // List<string> list = _repo.FullItems.Where(x => x.ItemId == Id && x.Size == size).Select(x => x.Color).Distinct().ToList();
+		   // return PartialView("_GetColors", list);
+	    //}
 
 	}
 }

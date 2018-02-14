@@ -32,11 +32,17 @@ namespace WebApplication5.Controllers
 			    {
 				    Item = item,
 					FullItems = _repo.FullItems.Where(x=>x.ItemId == item.Id).ToList(),
-					Images = _repo.Images.Where(x=>x.ItemId == item.Id).ToList()
+					Images = _repo.Images.Where(x=>x.ItemId == item.Id).ToList(),
+					GroupId = _repo.Groups.First(x=>x.ItemId == item.Id).GroupId
 			    });
 
 		    }
-		    return View(viewModel);
+			ItemBigViewModelAdmin model = new ItemBigViewModelAdmin()
+			{
+				ModelList =  viewModel,
+				GroupIds = _repo.Groups.Select(x=>x.GroupId).Distinct().ToList()
+			};
+		    return View(model);
 	    }
 
 	    public ViewResult Edit(int Id)
@@ -88,7 +94,13 @@ namespace WebApplication5.Controllers
 		    Image img = Id == 0 ? new Image() {Id=0, ItemId = ItemId, IsHead = _isHead} : _repo.Images.FirstOrDefault(x => x.Id == Id); 
 		    return View(img);
 	    }
-
+		public ActionResult CreateFullItem(int Id)
+		{
+			return View("EditFullItem", new FullItem()
+			{
+				ItemId = Id
+			});
+		}
 		[HttpPost]
 		public ActionResult GetPhoto(int ItemId, int Id, bool IsHead, HttpPostedFileBase Image)
 		{
@@ -147,24 +159,47 @@ namespace WebApplication5.Controllers
 		public ViewResult EditFullItem(int Id)
 		{
 			FullItem item = _repo.FullItems.FirstOrDefault(x => x.Id == Id);
+		
 			return View(item);
 		}
 		[HttpPost]
-		public void EditFullItem(FullItem game)
+		public ViewResult EditFullItem(FullItem game)
 		{
-			//if (ModelState.IsValid)
-			//{
-			//	_repo.SaveItem(game);
+			if (ModelState.IsValid)
+			{
+				TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", _repo.Items.First(x=>x.Id==game.ItemId).Name);
+				_repo.SaveFullItem(game);
+				return View("EditFullItem", game);
+			}
+			else
+			{
+				return View("EditFullItem", game);
+			}
+		}
 
-			//	TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", game.Name);
-			//	return RedirectToAction("Edit", game);
-			//}
-			//else
-			//{
-			//	// Что-то не так со значениями данных
-			//	return View(game);
-			//}
+		public ActionResult DeleteFullItem(int id)
+		{
+			int itemId = _repo.FullItems.First(x => x.Id == id).ItemId;
+			_repo.DeleteFullItem(id);
+			return RedirectToAction("FullItems", new { Id = itemId});
 
 		}
+
+	    public ActionResult Group(int Id, string group)
+	    {
+			Models.Group gr = new Group() {ItemId = Id};
+		    if (group == "new")
+		    {
+			    gr.GroupId = _repo.Groups.Max(x => x.GroupId) + 1;
+		    }
+		    else
+		    {
+			    gr.GroupId = Convert.ToInt32(group);
+		    }
+			TempData["message"] = string.Format("Изменения в товаре \"{0}\" были сохранены", _repo.Items.First(x => x.Id == Id).Name);
+
+			_repo.SaveGroup(gr);
+		    return RedirectToAction("Index");
+	    }
 	}
 }

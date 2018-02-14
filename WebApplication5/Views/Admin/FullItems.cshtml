@@ -8,7 +8,7 @@
 <h2>FullItems</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateFullItem", new {Id = Model.Id})
 </p>
 <table class="table">
     <tr>
@@ -17,9 +17,6 @@
         </th>
         <th>
 			Size
-        </th>
-        <th>
-			Color
         </th>
         <th>
 			Quantity
@@ -41,14 +38,11 @@
 						@Html.DisplayFor(modelItem => item.Size)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.Color)
-					</td>
-					<td>
 						@Html.DisplayFor(modelItem => item.Quantity)
 					</td>
 					<td>
 						@Html.ActionLink("Edit", "EditFullItem", new {id = item.Id}) |
-						@Html.ActionLink("Delete", "Delete", new {id = item.Id})
+						@Html.ActionLink("Delete", "DeleteFullItem", new {id = item.Id})
 					</td>
 				</tr>
 			}
@@ -56,3 +50,6 @@
 
 	}
 </table>
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>

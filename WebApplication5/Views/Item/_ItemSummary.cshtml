@@ -1,6 +1,6 @@
 ﻿@model WebApplication5.Models.ItemViewModel
 
-<div class="col-sm-12 col-md-4 col-lg-4 fitem">
+<div class="col-sm-12 col-md-4 col-lg-4 fitem fitem1">
 	<div class="item">
 		<div class="item-details clearfix">
 			<a href="@Url.Action("ItemBig", new {id = Model.Item.Id})">
@@ -19,7 +19,7 @@
 				{
 					<p><br/></p>
 				}
-				<p class="desc">@($"\n{Model.Item.Description}\n")</p>
+				<p class="itemP" class="desc">@($"\n{Model.Item.Description}\n")</p>
 				<div class="buttons">
 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 price">
 						<div class="old-price">₽@(Model.Item.Price * 1.4)</div>

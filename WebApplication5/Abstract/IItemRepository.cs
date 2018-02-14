@@ -15,8 +15,10 @@ namespace WebApplication5.Abstract
 		void AddImg(Image img);
 		void DeleteImage(int Id);
 		IEnumerable<FullItem> FullItems { get; }
-
+		void SaveFullItem(FullItem item);
+		void DeleteFullItem(int Id);
 		IEnumerable<Group> Groups { get; }
+		void SaveGroup(Group group);
 
 	}
 }

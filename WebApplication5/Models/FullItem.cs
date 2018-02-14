@@ -18,8 +18,8 @@ namespace WebApplication5.Models
 	{
 		public int Id { get; set; }
 		public int ItemId { get; set; }
+		[Required(ErrorMessage = "Пожалуйста, укажите размер")]
 		public string Size { get; set; }
-		public string Color { get; set; }
 		[Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для количества")]
 		public int Quantity { get; set; }
 	}

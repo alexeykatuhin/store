@@ -517,7 +517,7 @@ h2 {
 }
 
 .featured .buttons, .fitem {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .featured img {
@@ -538,7 +538,12 @@ h2 {
     padding: 0 29px;
     margin-bottom: 5px;
 }
-
+.itemP {
+	height: 75px;
+}
+.fitem1 {
+	margin-top: 30px;
+}
 .featured .item-details .name,
 .caption14{
     font-weight: bold;
@@ -2645,4 +2650,14 @@ table.checkout .card input[type=submit] {
 	#inp {
 		border: white;
 		background-color: white;
+	}
+	.liNav {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.aNav {
+		font-size: 14px;
+	}
+	.aNavSelected {
+		font-weight: bold;
 	}
