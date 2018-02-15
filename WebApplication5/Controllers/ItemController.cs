@@ -25,18 +25,18 @@ namespace WebApplication5.Controllers
 
 	    public ActionResult Index()
 	    {
-		    
+		    return View("Index");
 	    }
 
 
 
 	
-		public ViewResult List(string category)
+		public ViewResult List(string categoryBig, string category = null)
 		{
 			if (!_repo.Items.Any())
 				return View(new ItemListViewModel());
 			curPage = 1;
-			List<Item> listItems =_repo.Items
+			List<Item> listItems =_repo.Items.Where(x => x.CategoryBig == categoryBig)
 					.Where(p => category == null || p.Category == category)
 					.OrderBy(game => game.Id)
 					.Take(pageSize).ToList();
@@ -54,15 +54,15 @@ namespace WebApplication5.Controllers
 			{
 				Items	= listView
 				,
-				CurrentCategory = category, Count = _repo.Items.Count(x=> category == null || x.Category == category)
+				CurrentCategory = category, Count = _repo.Items.Where(x => x.CategoryBig == categoryBig).Count(x=> category == null || x.Category == category)
 			}; 
 			return View(model);
 		}
 
-	    public ActionResult GetList(string category)
+	    public ActionResult GetList(string categoryBig, string category = null)
 	    {
 		    
-			List<Item> listItems = _repo.Items
+			List<Item> listItems = _repo.Items.Where(x => x.CategoryBig == categoryBig)
 				.Where(p => string.IsNullOrEmpty(category) || p.Category == category)
 				.OrderBy(game => game.Id).Skip((++curPage-1)*pageSize).Take(pageSize).ToList();
 

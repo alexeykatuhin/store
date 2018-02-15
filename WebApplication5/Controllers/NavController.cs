@@ -18,11 +18,11 @@ namespace WebApplication5.Controllers
 		    _repo = repo;
 	    }
 
-	    public PartialViewResult Menu(string category=null)
+	    public PartialViewResult Menu(string categoryBig,string category=null)
 	    {
 		    ViewBag.SelectedCategory = category;
 			List<NavViewModel> res = new List<NavViewModel>();
-			IEnumerable<string> categories = _repo.Items
+			IEnumerable<string> categories = _repo.Items.Where(x => x.CategoryBig == categoryBig)
 						 .Select(game => game.Category)
 				.Distinct()
 				.OrderBy(x => x);

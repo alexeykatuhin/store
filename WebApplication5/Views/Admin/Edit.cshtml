@@ -26,6 +26,23 @@
 							@Html.TextArea(property.PropertyName, null,
 								new { @class = "form-control", rows = 5 })
 						}
+						else if (property.PropertyName == "CategoryBig")
+						{
+							<select class="qty1" name="CategoryBig">
+								<option value="@Model.CategoryBig">@Model.CategoryBig</option>
+								@{
+									string[] genders = {"man", "woman", "child"};
+								}
+								@foreach (string s in genders)
+								{
+									if (s != Model.CategoryBig)
+									{
+										<option value="@s">@s</option>
+									}
+								}
+
+							</select>
+						}
 						else
 						{
 							@Html.TextBox(property.PropertyName, null,

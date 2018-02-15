@@ -45,6 +45,7 @@ namespace WebApplication5.Concrete
 					dbEntry.Price = item.Price;
 					dbEntry.Category = item.Category;
 					dbEntry.FullDescription = item.FullDescription;
+					dbEntry.CategoryBig = item.CategoryBig;
 				}
 			}
 			_cntx.SaveChanges();

@@ -36,7 +36,7 @@ namespace WebApplication5
 
 
 			routes.MapRoute(null,
-		  "{category}",
+		  "{categoryBig}",
 		  new { controller = "item", action = "List" }
 	  );
 

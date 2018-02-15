@@ -21,6 +21,11 @@ namespace WebApplication5.Models
 		[Display(Name = "Название")]
 		[Required(ErrorMessage = "Пожалуйста, введите название наименование")]
 		public string Name { get; set; }
+		[Display(Name = "Пол")]
+		[Required(ErrorMessage = "Пожалуйста, укажите пол")]
+		public string CategoryBig { get; set; }
+
+
 		[Display(Name = "Категория")]
 		[Required(ErrorMessage = "Пожалуйста, укажите категорию")]
 		public string Category { get; set; }

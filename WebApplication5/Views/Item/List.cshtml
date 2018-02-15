@@ -64,8 +64,18 @@ else
 				$('#itemsCount').html($(".item").length);
 				if ($(".item").length == @Model.Count) {
 					$('#loadItems').css('display', 'none');
-				$('#returnBack').css('display', 'block');
-			}
+					$('#returnBack').css('display', 'block');
+				}
 
-			}
+			};
+	$(window).load(function() {
+		$('#itemsCount').html($(".item").length);
+		if ($(".item").length == @Model.Count) {
+			$('#loadItems').css('display', 'none');
+			$('#returnBack').css('display', 'none');
+		} else {
+			$('#loadItems').css('display', 'block');
+		}
+
+	});
 </script>
