@@ -22,6 +22,14 @@ namespace WebApplication5.Controllers
 		    _repo = repo;
 	    }
 
+
+	    public ActionResult Index()
+	    {
+		    
+	    }
+
+
+
 	
 		public ViewResult List(string category)
 		{

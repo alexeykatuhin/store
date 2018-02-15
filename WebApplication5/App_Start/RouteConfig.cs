@@ -15,14 +15,24 @@ namespace WebApplication5
 
 
 			routes.MapRoute(null,
-				"",
-				new
-				{
-					controller = "Item",
-					action = "List",
-					category = (string)null
-				}
-				);
+	"",
+	new
+	{
+		controller = "Item",
+		action = "Index"
+	}
+	);
+
+
+			//routes.MapRoute(null,
+			//	"",
+			//	new
+			//	{
+			//		controller = "Item",
+			//		action = "List",
+			//		category = (string)null
+			//	}
+			//	);
 
 
 			routes.MapRoute(null,
