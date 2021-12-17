@@ -19,6 +19,6 @@ namespace WebApplication5
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
-		}
+		}develop2 change
 	}
 }
