@@ -3,7 +3,7 @@ using System.Web.Optimization;
 
 namespace WebApplication5
 {
-	public class BundleConfig
+	public class BundleConfigd
 	{
 		//Дополнительные сведения об объединении см. по адресу: http://go.microsoft.com/fwlink/?LinkId=301862
 		public static void RegisterBundles(BundleCollection bundles)
